@@ -1,0 +1,306 @@
+.flex {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    display: -ms-flexbox;
+}
+
+.vertical {
+    box-orient: vertical;
+}
+
+.first {
+    margin: auto;
+}
+
+.login {
+    display: -webkit-box;
+    /* ÀÏ°æ±¾Óï·¨: Safari,  iOS, Android browser, older WebKit browsers.  */
+    display: -moz-box;
+    /* ÀÏ°æ±¾Óï·¨: Firefox (buggy) */
+    display: -ms-flexbox;
+    /* »ìºÏ°æ±¾Óï·¨: IE 10 */
+    display: -o-box;
+    /* ÐÂ°æ±¾Óï·¨£º Chrome 21+ */
+    display: flex;
+    /*ÀÏ°æ±¾Óï·¨*/
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    /*»ìºÏ°æ±¾Óï·¨*/
+    -ms-flex-align: center;
+    /*ÐÂ°æ±¾Óï·¨*/
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../img/login_bg.png') repeat;
+}
+
+.login_center {
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    -o-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.login_center img {
+    width: 10rem;
+    margin-bottom: 3rem;
+}
+
+.login_center img.login_logo {
+    margin-bottom: 1rem;
+    position: relative;
+    top: -3rem;
+}
+
+.login_center .am-btn {
+    width: 30%;
+    margin: 0 .5rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.login_center input.am-form-field {
+    width: 100%;
+    height: 2.5rem;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, .4);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.login_center p {
+    margin-top: .5rem;
+}
+
+.login_form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.login_center input.am-form-field::-webkit-input-placeholder {
+    color: white;
+}
+
+.login_center input.am-form-field::-moz-input-placeholder {
+    color: white;
+}
+
+.login_center input.am-form-field::-ms-input-placeholder {
+    color: white;
+}
+
+.login_form p {
+    margin-top: -0.5rem;
+    text-align: right;
+}
+
+.login_form p a {
+    font-size: .9rem;
+    color: white;
+    text-decoration: underline;
+}
+
+.register form {
+    margin: 0 20px;
+    padding-top: 15px;
+}
+
+.reg_input {
+    margin-bottom: 1rem;
+}
+
+.reg_input label {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 8rem;
+    background-color: #ececec;
+    text-align: center;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: normal;
+    white-space: nowrap;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.reg_input input {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 3.5rem;
+    outline: none;
+    font-size: 1.5rem;
+    background-color: #ececec;
+    -webkit-flex: 1;
+    margin-left: .5rem;
+    padding: 0 1rem;
+    color: black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.reg_input input::-webkit-input-placeholder {
+    color: black;
+}
+
+.reg_input input::-moz-input-placeholder {
+    color: black;
+}
+
+.reg_input input::-ms-input-placeholder {
+    color: black;
+}
+
+.user_agreement {
+    margin-bottom: 3rem;
+}
+
+.user_agreement span.user {
+    font-size: 1.1rem;
+}
+
+.user_agreement span a {
+    color: #f85454;
+}
+
+.reg_btn {
+    text-align: center;
+}
+
+.register button {
+    padding: 5px 3rem;
+    border-radius: 5px;
+}
+
+.register .am-btn-default {
+    background-color: #c0c0c0;
+    color: #736E6E;
+}
+
+.reg_test {
+    margin-bottom: 1rem;
+}
+
+.reg_test input {
+    border: none;
+    background-color: #ececec;
+    color: black;
+    height: 3.5rem;
+    width: 8rem;
+    font-size: 1.3rem;
+    line-height: 3.5rem;
+    text-align: center;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.reg_test input[type='button'] {
+    border: none;
+    background-color: #ececec;
+    color: black;
+    height: 3.5rem;
+    width: auto;
+    font-size: 1.3rem;
+    line-height: 3.5rem;
+    outline: none;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.reg_test input::-webkit-input-placeholder {
+    color: black;
+}
+
+.reg_test input::-moz-input-placeholder {
+    color: black;
+}
+
+.reg_test input::-ms-input-placeholder {
+    color: black;
+}
+
+.reg_test button {
+    border: none;
+    outline: none;
+    background-color: #ececec;
+    color: black;
+    height: 3rem;
+    padding: 0 .7rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+}
+
+.shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: -webkit-box;
+    /* ÀÏ°æ±¾Óï·¨: Safari,  iOS, Android browser, older WebKit browsers.  */
+    display: -moz-box;
+    /* ÀÏ°æ±¾Óï·¨: Firefox (buggy) */
+    display: -ms-flexbox;
+    /* »ìºÏ°æ±¾Óï·¨: IE 10 */
+    display: -webkit-flex;
+    /* ÐÂ°æ±¾Óï·¨£º Chrome 21+ */
+    display: flex;
+    /*ÀÏ°æ±¾Óï·¨*/
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    /*»ìºÏ°æ±¾Óï·¨*/
+    -ms-flex-align: center;
+    /*ÐÂ°æ±¾Óï·¨*/
+    -webkit-align-items: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.shade.up {
+    animation: mymove 2s 1;
+    -webkit-animation: mymove 2s 1;
+}
+
+.shade div {
+    width: 12rem;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+}
+
+.shade div span {
+    font-size: 4rem;
+}
+
+.shade div p {
+    font-size: 1rem;
+    margin: 10px 0 20px;
+}
+
+.am-comment {
+    margin: 15px auto;
+}
+
+@-webkit-keyframes mymove {
+    0% {
+        opacity: 0;
+        z-index: -1;
+    }
+    50% {
+        opacity: 1;
+        z-index: 100;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}

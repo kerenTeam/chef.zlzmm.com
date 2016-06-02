@@ -1,0 +1,102 @@
+
+body{
+	background-color: #f4f4f4;
+}
+li{
+	list-style: none;
+}
+.address .seach_a{
+    margin: 0 auto;
+    width: 70%;
+    display: block;
+    margin-top: 1.2rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 1%;
+    padding-left: 8%;
+    background: url('../img/serve (3).png') 1% 50% no-repeat;
+    background-size: 10%;
+    background-color: #fff;
+    outline: none;
+}
+.address .now_add{
+	text-align: center;
+   margin: 1rem 0;
+}
+.address .last_add{
+	text-align: center;
+	margin: 1rem 0;
+   padding: 1%;
+   background-color: #fff;
+}
+.address .last_add img{
+    width: 5%;
+    margin-top: -1%;
+    margin-right: 0.5rem;
+}
+.poeple_info{
+	background-color: #ffffff; 
+	padding: 0 0 5% 0;
+}
+.poeple_info li{
+	padding: 1% 0 1% 5%;
+	border-bottom: 1px solid #eee;
+}
+.poeple_info li:last-child{
+	border: none;
+}
+.poeple_info li span{
+	width: 7rem;
+	display: inline-block;
+}
+.poeple_info li b{
+	font-weight: normal;
+}
+.poeple_info input{
+	background: none;
+	border: none;
+	outline: none;
+}
+.confirm{
+	text-align: center;
+	margin-top: 2rem;
+}
+.confirm input{
+    background-color: #f8b551;
+    border: none;
+    border-radius: 3px;
+    width: 50%;
+    padding: 1.2%;
+    font-size: 1.8rem;
+    color: #fff;
+}
+.history_add{
+	background-color: #fff; 
+	margin-top: 2rem;
+}
+.history_add .his_add_top{
+   background: url('../img/serve (1).png') 5% 50% no-repeat;
+   background-size: 6%;
+   padding: 1% 0 1% 15%;
+   margin: 0;
+}
+.add_list{
+	padding: 0;
+	margin-top: 0.5rem;
+}
+.add_list li{
+	border-top: 1px solid #eee;
+	padding: 5% 0 0 5%;
+}
+.add_list li .name , .add_list li .sex{
+	width: 15%;
+	display: inline-block;
+}
+.add_list li span{
+	color: #777;
+}
+.add_list li p{
+	margin: 1rem 0 0 0;
+	padding-bottom: 5%;
+
+}
