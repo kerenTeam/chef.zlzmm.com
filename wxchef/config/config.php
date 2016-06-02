@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
  
-$config['base_url'] = 'http://chef.zlzmm.com/'; //http://www.krfer.com/WXTEST2/
+$config['base_url'] = 'http://www.krfer.com/WXTEST2/'; //http://www.krfer.com/WXTEST2/
  
 /*
 |--------------------------------------------------------------------------
