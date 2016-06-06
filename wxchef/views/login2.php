@@ -38,7 +38,7 @@
 <script type="text/javascript">
     $(function(){
       $("#login").bind('submit',function(){
-          var username = $(".login_form input[type='text']").val();
+          var username = $(".login_form input[type='tel']").val();
           var password = $(".login_form input[type='password']").val();
           if(username == ''){
               shade('am-icon-meh-o','用户名为空');

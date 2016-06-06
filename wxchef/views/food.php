@@ -143,11 +143,11 @@
     </div> 
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
         <div class="am-u-sm-8 green a">
-          <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">0</span>份
+          <img src="skin/img/cl.png" class="cartImg am-posR" alt=""><span id="fen" class="allmoney cartA" style="top: 1rem;left: 1.8rem;">0</span>
           <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
         </div>
         <div class="am-u-sm-4 b">
-          <button type="submit" class="am-btn am-btn-success tijiao">确定</button>
+          <button type="submit" class="am-btn am-btn-success tijiao">去结算</button>
         </div>
     </div>
   </form>

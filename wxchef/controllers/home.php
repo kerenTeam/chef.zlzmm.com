@@ -35,6 +35,12 @@ class home extends CI_Controller
 		$this->load->view('login');
 		
 	}
+	//地图
+	public function map(){
+
+		$this->load->view('map');
+		
+	}
 	//订单总评价
 	public function commentTotal(){
 		if($_GET){
@@ -183,6 +189,35 @@ class home extends CI_Controller
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=1&dis=number');
 		$data['banners'] = json_decode(json_decode($banner),true);
 		$this->load->view('index',$data);
+	}
+	// 购物车demo
+	public function demo(){
+
+		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
+		$data['cates'] = json_decode(json_decode($catejson),true);
+		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
+		// 去掉首尾引号
+		$food = ltrim(rtrim($foodjson,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$foods = json_decode($a,true);
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] != ''){
+				$shop = $_SESSION['shoping'];
+				foreach($foods as $k=>$v){
+					$foods[$k]['number'] = '0';
+					foreach ($shop as $key => $value) {
+						if($v['foodid'] == $value['foodid']){
+							$foods[$k]['number'] = $value['number'];
+						}
+					}
+					
+				}
+			}
+		}
+		
+		$data['foods'] = $foods;
+		$this->load->view('cailanDemo',$data);
 	}
 	//菜单 by wf
 	public function cailan(){

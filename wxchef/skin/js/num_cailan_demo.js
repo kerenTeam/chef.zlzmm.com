@@ -1,61 +1,44 @@
-/** 初始化一个空数组用来存放已经添加的ID */
-var ids = new Array();
-/** 自增ID */
-var tempId = 0;
 /** 总份数*/
 var fens = document.getElementById("fen");
-//var fen = parseFloat(fens.value); 
 var fen = parseFloat(fens.innerHTML);
-var allmoney = document.getElementById("allmoney");
+//底部购物车
+var bottomCart = document.getElementsByClassName('bottomCart')[0];
 /** 总价格 */
-var paymoney;
-var curCount;
-//男
-var servTotal1;
-//女
-var servTotal2;
-// 总服务员费
-var servTotal;
-var onum = 0;
+var allmoney = document.getElementById("allmoney");
+var paymoney = parseFloat(allmoney.innerHTML);
+//服务费
 var fee = document.getElementById('fee');
 var ff = document.getElementsByClassName('ff')[0];
 var servmoeny = document.getElementById("servmoney");
-//服务费
-var fwf = parseFloat(servmoeny.innerHTML);
-var ban = document.getElementsByClassName('ban-price');
-var banAll = 0;
-// 服务员数量
-var serinput2 = document.getElementsByClassName('serinput2')[0];
-var serinput = document.getElementsByClassName('serinput')[0];
-// 服务员价格
-var serprice = document.getElementById('serprice');
-var serprice2 = document.getElementById('serprice2');
-servTotal1 = document.getElementById('servTotal');
-servTotal2 = document.getElementById('servTotal2');
+var fwf;
+//服务条款
+var fwftip = document.getElementsByClassName('fwftip')[0];
+//当前输入框的值
+var curCount;
+var onum = 0;
+//加载完成统计份数和总价
 window.onload = function() {
-
-    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
-
-    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
-    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
-    console.log(servTotal);
     var ordFen = document.getElementsByClassName('numTxt');
     var ordPrice = document.getElementsByClassName('price');
-    fen = parseInt(serinput.value) + parseInt(serinput2.value);
+    fen = 0;
     paymoney = 0;
-    for (var j = 0; j < ban.length; j++) {
-        banAll += parseFloat(ban[j].innerHTML);
-    }
     for (var i = 0; i < ordFen.length; i++) {
         fen += parseInt(ordFen[i].value);
         paymoney += parseFloat(parseInt(ordFen[i].value) * parseFloat(ordPrice[i].innerHTML));
-        console.log(paymoney)
     }
-    servFee(paymoney);
+
     fens.innerHTML = fen;
-    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
+    if (fen > 0) {
+        fwftip.style.display = "block";
+    } else {
+        fwftip.style.display = "none";
+    }
+
+    servFee(paymoney);
+    allmoney.innerHTML = (paymoney + fwf).toFixed(2);
 }
 
+//键盘松开时 限制非数值型输入
 function IsNum(e) {
     var k = window.event ? e.keyCode : e.which;
     if (((k >= 48) && (k <= 57)) || k == 8 || k == 0) {} else {
@@ -66,7 +49,6 @@ function IsNum(e) {
         }
     }
 }
-
 //每次输入时获取当前的值
 function keydown(t) {
     if (event.keyCode == 13)
@@ -74,7 +56,7 @@ function keydown(t) {
     else
         onum = t.value;
 }
-
+//同步输入 验证+数量总价显示
 function ueserWrite(obj) {
     console.log(obj.value);
     curCount = obj.value;
@@ -85,28 +67,22 @@ function ueserWrite(obj) {
         return false;
     }
     var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
-    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
-    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
-    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
     fen += obj.value - onum;
     fens.innerHTML = fen;
     paymoney += (obj.value - onum) * prices;
-    allmoney.innerHTML = paymoney.toFixed(2);
     servFee(paymoney);
-    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
+    allmoney.innerHTML = (paymoney + fwf).toFixed(2);
+
 }
 
+//加减操作
 function handle(self, isAdd) {
     var countEl = self.parentNode.childNodes[3];
     curCount = parseFloat(countEl.value);
 
     var reduce = self.parentNode.childNodes[1];
     var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
-    //  var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
     var foodId = self.parentNode.parentNode.childNodes[1].value;
-    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
-    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
-    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
 
     if (isAdd) {
         curCount++;
@@ -115,7 +91,13 @@ function handle(self, isAdd) {
         reduce.style.display = "inline-block";
         countEl.style.display = "inline-block";
         paymoney += parseFloat(price);
-        // prabola();
+
+        fens.innerHTML = fen;
+        countEl.value = curCount;
+        allmoney.innerHTML = paymoney.toFixed(2);
+
+        addcart()
+            // prabola();
     } else {
         curCount--;
         console.log(curCount);
@@ -126,16 +108,80 @@ function handle(self, isAdd) {
             reduce.style.display = "none";
             countEl.style.display = "none";
 
-        } else
+        } else {
             paymoney -= parseFloat(price);
+        }
+
+
     }
     servFee(paymoney);
     fens.innerHTML = fen;
+
+
     countEl.value = curCount;
-    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
+    allmoney.innerHTML = (paymoney + fwf).toFixed(2);
+    if (fen > 0) {
+        fwftip.style.display = "block";
+    } else {
+        fwftip.style.display = "none";
+    }
 }
 
+//底部购物车加减操作
+function deal(self, isAdd) {
+    var number = self.parentNode.childNodes[3];
+    curnum = parseInt(number.innerHTML);
+    console.log(curnum);
+    var reduce = self.parentNode.childNodes[1];
+    var priceh = parseFloat(self.parentNode.parentNode.getElementsByClassName("priceh")[0].value); /* 获取价格 */
+    var et = self.parentNode.parentNode.getElementsByClassName("everyTotal")[0];
+    console.log(priceh);
+    var everyTotal = parseFloat(et.innerHTML);
+    //  var foodId = self.parentNode.parentNode.childNodes[1].value;
+
+    if (isAdd) {
+        curnum++;
+        console.log(curnum);
+        fen++;
+        paymoney += priceh;
+        everyTotal += priceh;
+        fens.innerHTML = fen;
+        number.innerHTML = curnum;
+        et.innerHTML = everyTotal;
+    } else {
+        curnum--;
+        console.log(curnum);
+        fen--;
+        if (curnum < 1) {
+            curnum = 0;
+            paymoney = paymoney - parseFloat(priceh) * 1;
+            everyTotal = 0;
+            var curli = self.parentNode.parentNode;
+            self.parentNode.parentNode.parentNode.removeChild(curli);
+
+        } else {
+            paymoney -= parseFloat(priceh);
+            everyTotal -= parseFloat(priceh);
+        }
+        et.innerHTML = everyTotal;
+        number.innerHTML = curnum;
+    }
+    servFee(paymoney);
+    fens.innerHTML = fen;
+
+
+    allmoney.innerHTML = (paymoney + fwf).toFixed(2);
+    if (fen > 0) {
+        fwftip.style.display = "block";
+    } else {
+        fwftip.style.display = "none";
+        bottomCart.style.display = "none";
+    }
+}
+
+
 //计算服务费
+
 function servFee(feeT) {
     if (feeT > 300 || feeT <= 0) {
         fwf = 0;

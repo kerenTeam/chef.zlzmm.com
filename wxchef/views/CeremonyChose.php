@@ -37,7 +37,7 @@
           <!-- 数量加减 -->
           <div class="CmNum">
             <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers<?=$val['Sort'];?>[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['DefaultNumber']?>">
+            <input type="text" class="numTxt" name="numbers<?=$val['Sort'];?>[]"  onkeydown="keydown(this)" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" value="<?=$v['DefaultNumber']?>">
             <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
           </div>
         </div>
@@ -53,13 +53,12 @@
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id=""> 
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">总价</span>
-        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
+        <span class="green am-posR"><img src="skin/img/cart.png" alt=""><span id="fen" class="am-hide allmoney cartA"></span>&nbsp;&nbsp;&nbsp;<i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
         <input type="hidden" name="moneyall" value="" id="moneyall"/>
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type="button" class="am-btn am-btn-success makeCheck">确认</button>
+        <button type="button" class="am-btn am-btn-success makeCheck">去结算</button>
         
       </div> 
   </div>
