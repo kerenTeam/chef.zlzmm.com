@@ -188,7 +188,7 @@
                       <span id="Insurer">
                         <i>请选择街道</i>
                         <ul>
-                          <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择街道</a></li>
+                          <li><a href="javascript:void(0)" alt="请选择街道">请选择街道</a></li>
                         </ul>
                         <input type="hidden" name="cho_Insurer" value="">
                       </span>
@@ -284,7 +284,7 @@
       <?php if(!empty($address)):?>
           <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
       <?php else:?>
-          <button type="button" class="am-u-sm-12 am-btn bgreen os firstPay" id="pay" disabled>去支付</button>
+          <button type="button" class="am-u-sm-12 am-btn bgreen os firstPay" id="pay">去支付</button>
       <?php endif;?>
   
     </form>
@@ -385,7 +385,7 @@
             var area = $('input[name="cho_Area"]').val();
             var Insurer = $('input[name="cho_Insurer"]').val();
      
-          if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''||area==''||Insurer=='请选择乡镇街道'){
+          if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''||area==''||Insurer=='请选择街道'){
               alert('还有信息未输入');
               $(this).focus();
               return false;
@@ -402,9 +402,9 @@
 
             $('#beginTime').date();
             $('#endTime').date({theme:"datetime"});
-            if($('#timeEat').val()==''){
-              $('#pay').attr('disabled','disabled');
-            }  
+            // if($('#timeEat').val()==''){
+            //   $('#pay').attr('disabled','disabled');
+            // }  
               console.log($('#beginTime').val());
 
               $('td').each(function(){ 
@@ -453,9 +453,21 @@
              }
               }); 
             $('.firstPay').live('click',function(){
+
               if(!$('#mainContent').has('li').length){
                 alert('请添加服务地址');
+                return false;
               }
+              if($('#timeEat').val()==''){
+              alert('请添加用餐日期');
+               return false;
+            }  
+            })
+             $('#pay').live('click',function(){ 
+              if($('#timeEat').val()==''){
+              alert('请添加用餐日期');
+               return false;
+            }  
             })
       })
 

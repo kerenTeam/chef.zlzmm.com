@@ -35,7 +35,7 @@ html {
 	</div>
   </div>
   <div class="reg_btn">
-    <button type="button" class="am-btn am-btn-default" disabled>下一步</button>
+    <button type="button" class="am-btn am-btn-default">下一步</button>
   </div>
 </form>
 <div class="shade">
@@ -81,6 +81,7 @@ html {
 		   
 		// 绑定提交按钮
 		$('.reg_btn button[type=button]').bind('click',function(){
+			//alert('123');
 			var tell = $(".reg_input input[type='tel']").val();
 			var test = $(".reg_test input[type='text']").val();
 			if(tell == ''){

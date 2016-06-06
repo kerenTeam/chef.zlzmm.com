@@ -99,12 +99,12 @@
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
       
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney">0</span>位</span>
+        <span class="green am-posR"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney cartA">0</span></span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type='submit'  class="am-btn am-btn-success">确认</button>
+        <button type='submit'  class="am-btn am-btn-success">去结算</button>
         
       </div>
     </div>

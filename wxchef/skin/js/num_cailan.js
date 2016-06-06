@@ -77,12 +77,12 @@ function handle(self, isAdd) {
         countEl.style.display = "inline-block";
         paymoney += parseFloat(price);
 
-    fens.innerHTML = fen;
-    countEl.value = curCount;
-    allmoney.innerHTML = paymoney.toFixed(2);
-        
+        fens.innerHTML = fen;
+        countEl.value = curCount;
+        allmoney.innerHTML = paymoney.toFixed(2);
+
         addcart()
-        // prabola();
+            // prabola();
     } else {
         curCount--;
         console.log(curCount);
@@ -93,11 +93,11 @@ function handle(self, isAdd) {
             reduce.style.display = "none";
             countEl.style.display = "none";
 
-        } else{
+        } else {
             paymoney -= parseFloat(price);
         }
 
-        
+
         fens.innerHTML = fen;
         countEl.value = curCount;
         allmoney.innerHTML = paymoney.toFixed(2);

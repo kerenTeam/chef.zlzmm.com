@@ -10,7 +10,12 @@
   <h1 class="am-header-title">
       菜篮子
   </h1>
-
+  <div class="am-header-right am-header-nav">
+      <a href="javascript:;" onClick="$('#my-confirm').modal('open');">
+        清空
+      </a> 
+      
+    </div>
 </header>
 
 <script type="text/javascript">
@@ -37,6 +42,19 @@ function doaction(obj) {
         });
   }
 </script>
+ 
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+  <div class="am-modal-dialog">
+    
+    <div class="am-modal-bd">
+      确认清空购物车吗？
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn gray" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn green" data-am-modal-confirm>确定</span>
+    </div>
+  </div>
+</div>
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
@@ -144,17 +162,11 @@ function doaction(obj) {
           <?php if(!empty($witer)):?>
               <li class="am-g am-padding-xs">
                     <label class="am-checkbox am-success am-u-sm-4 serl">
-                  服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck <?php if($witer['boy'] != 0){echo "checked";}?>>
+                  服务员(男)
                   </label> 
                 <input type="hidden" id="servTotal" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
-               <div class="am-marign-top-sm am-fr cd" style="
-               <?php if($witer['boy'] == 0):?>
-                display: none;
-              <?php else:?>
-                display: block;
-              <?php endif;?>
-               ">
+               <div class="am-marign-top-sm am-fr cd">
                   <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
                   <input type="text" class="serinput" readonly="" name="boy" value="<?=$witer['boy'];?>" >
                   <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
@@ -163,13 +175,12 @@ function doaction(obj) {
               <li class="am-g am-padding-xs"> 
        
                   <label class="am-checkbox am-success am-u-sm-4 serl">
-                     服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck <?php if($witer['girl'] != 0){echo "checked";}?>>
+                     服务员(女)
                   </label> 
                 <input type="hidden" id="servTotal2" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice2">80</span>元/位</div>
  
-               <div class="am-marign-top-sm am-fr cd2"style="
-               <?php if($witer['girl'] == 0):?>display: none;<?php else:?>display:block;<?php endif;?>">
+               <div class="am-marign-top-sm am-fr cd2">
                   <span class="reduce am-icon-minus-circle red" onClick="empdel2()"></span>
                   <input type="text" class="serinput2" readonly="" name="girl" value="<?=$witer['girl'];?>" >
                   <span class="add am-icon-plus-circle green" onClick="empladd2()"></span>
@@ -178,28 +189,27 @@ function doaction(obj) {
            <?php else:?>
          <li class="am-g am-padding-xs">
                     <label class="am-checkbox am-success am-u-sm-4 serl">
-                  服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck>
+                  服务员(男)
                   </label> 
                 <input type="hidden" id="servTotal" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
-               <div class="am-marign-top-sm am-fr cd" style=" display: none;
-               ">
-                  <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
-                  <input type="text" class="serinput" readonly="" name="boy" value="0" >
+               <div class="am-marign-top-sm am-fr cd">
+                  <span class="reduce am-icon-minus-circle red" style="display: none" onClick="empdel()"></span>
+                  <input type="text" class="serinput" style="display: none" readonly="" name="boy" value="0" >
                   <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
                 </div>
              </li>
               <li class="am-g am-padding-xs"> 
        
                   <label class="am-checkbox am-success am-u-sm-4 serl">
-                     服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck >
+                     服务员(女)
                   </label>  
                 <input type="hidden" id="servTotal2" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice2">80</span>元/位</div>
  
-               <div class="am-marign-top-sm am-fr cd2" style=" display: none;">
-                  <span class="reduce am-icon-minus-circle red" onClick="empdel2()"></span>
-                  <input type="text" class="serinput2" readonly="" name="girl" value="0" >
+               <div class="am-marign-top-sm am-fr cd2">
+                  <span class="reduce am-icon-minus-circle red" style="display: none" onClick="empdel2()"></span>
+                  <input type="text" class="serinput2" style="display: none" readonly="" name="girl" value="0" >
                   <span class="add am-icon-plus-circle green" onClick="empladd2()"></span>
                 </div>
              </li>
@@ -213,12 +223,12 @@ function doaction(obj) {
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="" style="bottom:49px;">
    
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney"></span>份</span>
+        <span class="green am-posR"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney cartA"></span></span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red"></span>
       </div>
       <div class="am-u-sm-4 b">
         
-        <button   type="submit" class="am-btn am-btn-success">确认</button>
+        <button   type="submit" class="am-btn am-btn-success">去付款</button>
         
       </div>
  

@@ -37,9 +37,9 @@
                     <input type="hidden" name="cho_Area" value="">
                   </span>
                   <span id="Insurer">
-                    <i>请选择乡镇街道</i>
+                    <i>请选择街道</i>
                     <ul>
-                      <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择乡镇街道</a></li>
+                      <li><a href="javascript:void(0)" alt="请选择街道">请选择街道</a></li>
                     </ul>
                     <input type="hidden" name="cho_Insurer" value="">
                   </span>
@@ -50,12 +50,12 @@
 		<div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">详细地址</div>
         <div class="am-u-sm-10">
-          <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' required>
+          <input type="text" placeholder="请填写您的详细地址" class="uaddress" name='address'>
         </div>
         <div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">姓名</div>
         <div class="am-u-sm-10">
-          <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required>
+          <input type="text" placeholder="请填写您的姓名" class="uname" name='name'>
         </div>
         <div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">电话</div>
@@ -74,7 +74,7 @@
          </label>
         </div>
         </fieldset>
-        <button type="submit" class="am-btn am-center am-btn-block bred" style="width: 90%" disabled>保存</button>
+        <button type="submit" class="am-btn am-center am-btn-block bred" style="width: 90%">保存</button>
       </form>
     </div>
   </div>
@@ -85,34 +85,52 @@
  <script>
    $(function(){
       
-      $('input[type="text"]').keyup(function() { 
+      // $('input[type="text"]').keyup(function() { 
+      //   var name = $('.uname').val();
+      //   var address = $('.uaddress').val();
+      //   var phone = $('.uphone').val();
+      //   var city = $('input[name="cho_City"]').val();
+      //   var area = $('input[name="cho_Area"]').val();
+      //   var Insurer = $('input[name="cho_Insurer"]').val();
+      //   if(name='' || area='' || phone='' || Insurer='请选择乡镇街道'){
+      //      // $('.bred').removeAttr('disabled');
+      //      alert('请输入完整地址');
+      // }
+      // });
+      // $('.liststyle span').live('click',function(){
+      //   if(name='' || area='' || phone='' || Insurer='请选择乡镇街道'){
+      //      $('.bred').removeAttr('disabled');
+      //    }
+      // })
+      $('.bred').click(function() { 
+       // alert('还有信息未输入');
         var name = $('.uname').val();
-        // var address = $('.uaddress').val();
+        var address = $('.uaddress').val();
         var phone = $('.uphone').val();
         var city = $('input[name="cho_City"]').val();
         var area = $('input[name="cho_Area"]').val();
         var Insurer = $('input[name="cho_Insurer"]').val();
-        if(name!='' && area!='' && phone!='' && Insurer!='请选择乡镇街道'){
-            $('.bred').removeAttr('disabled');
-      }else{
-           $('.bred').attr('disabled','disable');
-      } 
-      });
-      $('.liststyle span').live('click',function(){
-        if(name!='' && area!='' && phone!='' && Insurer!='请选择乡镇街道'){
-           $('.bred').removeAttr('disabled');
-         }else{
-           $('.bred').attr('disabled','disable');
-      }
-      })
-      $('.afcheck').live('submit',function() { 
-        
-        if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test($('.uphone').val()))){
+        if(area=='' || Insurer=='请选择街道' || address==''){
+           // $('.bred').removeAttr('disabled');
+           alert('请输入完整地址');
+           return false;
+        }
+        if(name==''){
+           // $('.bred').removeAttr('disabled');
+           alert('请输入用户名');
+           return false;
+        }
+        if(phone==''){
+           // $('.bred').removeAttr('disabled');
+           alert('请输入电话号码');
+           return false;
+        }
+        if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
           alert("请输入正确电话号码");
           $('.uphone').focus();
           return false;
         }
-      });
+       });
    })
  </script>
 <script type="text/javascript" src="skin/js/city4.city.js"></script>

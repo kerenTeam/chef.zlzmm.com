@@ -12,6 +12,30 @@ body {
     overflow-y: visible;
 }
 
+
+/*底部购物车数量*/
+
+.am-posR {
+    position: relative;
+    margin-right: 10px;
+}
+
+.cartA {
+    position: absolute;
+    background: #F85554;
+    left: 1rem;
+    /* display: inherit; */
+    top: -2px;
+    bottom: 0;
+    color: white;
+    width: 1.7rem;
+    height: 1.7rem;
+    line-height: 1.7rem;
+    border-radius: 50%;
+    "
+
+}
+
 .cmax {
     max-height: 4.8rem;
     overflow: hidden;
@@ -371,7 +395,7 @@ body {
     background: none!important;
     border: 0!important;
     outline: none!important;
-    text-align: left;
+    text-align: right;
 }
 
 .safe input {
@@ -2063,6 +2087,8 @@ figure a:hover figcaption {
     bottom: 0.9rem;
     left: 0;
     width: 100%;
+    padding-bottom: 1rem;
+    font-size: 20px;
 }
 
 .cefont {
@@ -2140,6 +2166,10 @@ figure a:hover figcaption {
     position: relative!important;
     right: 0.5rem!important;
     top: -0.3rem;
+}
+
+.mapAddress {
+    height: 14rem;
 }
 
 .contactGo {
@@ -2502,11 +2532,14 @@ figure a:hover figcaption {
     .moa {
         margin-top: 4px;
     }
+    .vimg2 {
+        width: 10.5rem;
+    }
     #city {
         min-width: 60px;
     }
     #Area {
-        min-width: 80px;
+        min-width: 78px;
     }
     #Insurer {
         min-width: 90px;
@@ -2585,6 +2618,10 @@ figure a:hover figcaption {
     .topform button {
         left: 40px;
     }
+    .vimg2 {
+        width: 9rem;
+        height: 9.5rem;
+    }
     .orderNum {
         width: 158px;
         overflow: hidden;
@@ -2598,6 +2635,9 @@ figure a:hover figcaption {
     .foodNum {
         right: 1rem!important;
     }
+    .cp input {
+        width: 76%;
+    }
     .find {
         width: 4rem;
         height: 4rem;
@@ -2608,7 +2648,7 @@ figure a:hover figcaption {
         right: 7.4rem;
     }
     .srNum {
-        margin-left: 1.5rem;
+        margin-left: 1.1rem;
     }
     .findSale [class*=am-u-] {
         height: 11.2rem;

@@ -7,21 +7,25 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    支付订单
+    支付成功
     </h1>
     <div class="am-header-right am-header-nav">
-      <a href="<?php echo site_url('home/index')?>" class="">
+     <!--  <a href="<?php echo site_url('home/index')?>" class="">
         首页
-      </a>
+      </a> -->
     </div>
   </header>
-  <!-- 付款成功提示 -->
-  <div class="suc">
-    <p><a href='<?=site_url("home/index");?>' ><img src="skin/img/ok.png" alt=""> 支付成功</a></p>
-  <!--   <p>支付方式：支付宝</p>
-    <p>支付金额：<span class="am-icon-cny">288</span></p> -->
-    <a href="<?php echo site_url('home/cailan')?>" class="red"><span class="am-icon-reply"></span>继续点菜</a>
-  </div>
+    <!-- 付款成功提示 -->
+   <div class="suc am-padding am-margin-bottom"> 
+          <p>订单已提交，我们的客服会尽快与您取得联系<br>
+请留意电话<a href="tel:84327788">84327788</a></p>
   
+    <a href="<?php echo site_url('home/cailan')?>" class="red"><span class="am-icon-reply"></span>继续点菜</a>
+     </div> 
+  
+  
+
+ 
 </body>
+ 
 </html>

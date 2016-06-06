@@ -8,6 +8,11 @@ h2.tip{margin:20px;font-size: 18px}
 <body>
   
   <?php
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 708656b2180028a1e9857e3723f2d1c57a556fc1
 	// if (empty($_GET["code"]))
  //    {
  //     header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");

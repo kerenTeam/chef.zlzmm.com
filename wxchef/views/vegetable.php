@@ -105,7 +105,7 @@
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type='submit'  class="am-btn am-btn-success">确认</button>
+        <button type='submit'  class="am-btn am-btn-success">去结算</button>
         
       </div>
   </div>

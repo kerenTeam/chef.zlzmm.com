@@ -11,7 +11,7 @@
   <h1 class="am-header-title">
   菜谱
   </h1>
-
+   
 </header>
 <script>
 // 增加菜品数量
@@ -69,21 +69,12 @@
            
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-4 am-text-center am-list-thumb">
-            <!-- <?php var_dump($v['code']); ?> -->
-            <?php if($v['code'] == 1999):?>
-              <a href="<?php echo site_url('home/partyInfo?id=').$v['foodid'];?>" class="vimg">
-            <?php else:?>
-              <a href="<?php echo site_url('home/food?id=').$v['foodid'];?>" class="vimg">
-            <?php endif;?>
+              <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="vimg">
                 <img src="skin/img/exp.gif" data-original="<?php echo IP.$v['thumbnail'];?>" class="lazy" alt="<?=$v['foodname'];?>"/>
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main am-padding-right-xs">
-              <?php if($v['code'] == 1999):?>
-                   <a href="<?php echo site_url('home/partyInfo?id=').$v['foodid'];?>" class="gray">
-              <?php else:?>
-                  <a href="<?php echo site_url('home/food?id=').$v['foodid'];?>" class="gray">
-              <?php endif;?>
+             <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="gray">
               <h3 class="am-list-item-hd black"><?=$v['foodname'];?></h3>
 
               <input type="hidden" name="foodid[]" value="<?=$v['foodid'];?>">
@@ -124,28 +115,84 @@
       </div>
     </div>
   </div>
+   <div class="bottomCart am-scrollable-vertical" style="display: none;    position: fixed;
+    width: 100%;
+    bottom: 64px;
+    background: rgba(0,0,0,0.4);
+    height: 100%;">
+      <div class="am-panel am-panel-default" style="    position: absolute;
+    width: 100%;
+    bottom: 0;">
+  <div class="am-panel-hd am-cf">
+    <span class="am-panel-title am-fl" style="border-left: 5px solid #F85554;padding-left: 0.5rem;">购物车</span>
+    <div class="am-fr gray">
+      <span class="am-icon-trash"></span>清空
+    </div>
+  </div> 
+  
+  <ul class="am-list am-list-static">
+  <div class="am-text-center am-text-lg am-margin-vertical-sm">庆典</div>
+    <li class="am-cf">
+        <div class="am-u-sm-5 am-margin-top-sm">客家卤汁酒香鸭</div>
+        <input type="hidden" name="price" class="priceh" value="38" />
+        <div class="am-u-sm-3 am-margin-top-sm"><i class="am-icon-cny red"></i><span class="everyTotal">114</span></div>
+        <div class="am-u-sm-4 am-text-center">
+           <span class="am-icon-minus-circle" style="    color: #FF9800;
+    cursor: pointer;
+    font-size: 1.6em;" onClick="deal(this, false),delcart();"></span>
+           <span class="readNum">3</span>
+           <span class="am-icon-plus-circle" style="    color: #4CAF50;
+    cursor: pointer;
+    font-size: 1.6em;
+}"  onClick="deal(this, true)"></span>
+        </div>
+    </li>
+  </ul> 
+</div>
 
+   </div>
+   <!-- 服务条款 -->
+   <div class="am-text-sm fwftip" style="position: fixed;
+    bottom: 49px;height: 36px;
+    padding: 0.5rem;
+    width: 100%;    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #FBF9F9;
+    border: 1px solid #eee;display: none"><span class="am-badge am-badge-warning am-margin-horizonal">费</span>0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</div>
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
      
       <div class="am-u-sm-8 a">
-        <span class="green am-posR"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney cartA">0</span></span>
+        <span class="green cartToggle" style="position: relative;margin-right: 10px;"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney" style="    position: absolute;
+    background: #F85554;
+    left: 1rem;
+    /* display: inherit; */
+    top: -2px;
+    bottom: 0;
+    color: white;
+    width: 1.7rem;
+    height: 1.7rem;
+    line-height: 1.7rem;
+    border-radius: 50%;">0</span></span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
+        <span class="ff am-text-sm gray" style="display: inline-block;">| 包含<span class="am-icon-cny" id="servmoney"></span>服务费 
+               <input type="hidden" id="fee" name="servmoneydata" value="0">
+      </span>
       </div>
-      <div class="am-u-sm-4 b">
-        
+      
+      <div class="am-u-sm-4 b"> 
         <button type='submit'  class="am-btn am-btn-success">去结算</button>
-        
       </div>
   </div>
 </form>
 
 
-<script src="skin/js/num_cailan.js"></script>
+<script src="skin/js/num_cailan_demo.js"></script>
 <script src="skin/js/jqueryLazyload.js"></script>
 <script>
 
  $(function(){
+   $("img.lazy").lazyload();
 var inputs = $('.numTxt');
 inputs.each(function() {
 var numI=$(this).val();
@@ -181,8 +228,26 @@ $('.typel li').on('click',function(){
 
 })
 
- $("img.lazy").lazyload();
-}) 
+ $('.cartToggle').bind('click',function() {
+  //  $('.bottomCart').css('display','');
+ // if($('.am-panel').find('li').length!=0){
+     $('.bottomCart').fadeToggle(200); 
+  //} 
+  //else{
+    
+   // $('.bottomCart').css('display','none');
+//$('.cartToggle').unbind();
+ // }
+ });
+ $(document).on('click','.bottomCart',function(){ 
+     $('.bottomCart').fadeOut(200);
+ });
+ $('.am-panel').click(function(event){ 
+  event.stopPropagation();
+    
+ })
+
+})
 </script>
 <style>
    .oo{
@@ -221,24 +286,10 @@ $('.typel li').on('click',function(){
             div.setAttribute("class","add am-icon-plus-circle oo");
             document.documentElement.appendChild(div);
              handle(this, true);
-             var par = setTimeout(function(){
-          // var divX = parseInt(div.style.left);
-         //  var divY = parseInt(div.style.top);
+             var par = setTimeout(function(){ 
          div.style.zIndex=99999;
                     div.style.left=car_x + "px";
-                    div.style.top=car_y + "px";//加单位很重要，不然不会动
-        // var speedX = (car_x-divX)/10;
-        // var speedY = (car_y-divY)/30;
-        // speedX=speedX>0?Math.ceil(speedX):Math.floor(speedX);
-        // // speedY=speedY>0?Math.ceil(speedY):Math.floor(speedY);
-        // div.style.left = divX + speedX + "px";
-        // div.style.top = divY + speedY + "px";
-        // if(divY == car_y && divX == car_x){
-        //  clearInterval(par);
-        //  div.parentNode.removeChild(div);
-        // }
-        // // console.log(divX)
-        // console.log(divX,divY +'======'+ car_x,car_y); 
+                    div.style.top=car_y + "px";//加单位很重要，不然不会动 
         var remove=setTimeout(function(){
                div.parentNode.removeChild(div);
       },550)
