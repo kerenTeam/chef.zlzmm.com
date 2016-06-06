@@ -76,7 +76,12 @@ function doaction(obj) {
       ?>
              <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
-                <a href="<?php echo site_url('home/food?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>" class="vimg">
+          
+              <?php if($food['code'] == 1999):?>
+                <a href="<?php echo site_url('home/partyInfo?id=').$food['foodid'];?>" class="vimg">
+              <?php else:?>
+                <a href="<?php echo site_url('home/food?id=').$food['foodid'];?>" class="vimg">
+              <?php endif;?>
                   <img src="<?php echo IP.$food['thumbnail'];?>" id="img" alt="<?=$food['foodname'];?>"/>
                 </a>
               </div>
