@@ -10,6 +10,11 @@
     </h1>
     
   </header>
+  <script>
+    
+
+
+  </script>
   <!-- banner -->
   <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
     <ul class="am-slides">

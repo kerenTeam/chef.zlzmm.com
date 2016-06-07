@@ -45,9 +45,13 @@ class home extends CI_Controller
 	public function commentTotal(){
 		if($_GET){
 			$id = $_GET['id'];
+			// 获取订单详情
 			$food = file_get_contents(POSTAPI.'API_Poorder?dis=ddxq&UserPhone='.$id);
 			$data['foods'] = json_decode(json_decode($food),true);
 			$data['id'] = $id;
+			// 获取订单总评
+			
+
 			$this->load->view('commentTotal',$data);
 		}
 
@@ -298,14 +302,23 @@ class home extends CI_Controller
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
-		$number = $_GET['number'];
-		isset($number) ? $data['number'] = $number : $data['number'] = '0';
-		isset($_GET['shopid']) ? $data['shopid'] = $_GET['shopid'] : NULL;
 		//产品详情
 		$foods = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
 		$foodjson = ltrim(rtrim($foods,'"'),'"');
       	$a =   str_replace('\"','"',$foodjson);
-        $data['foods'] = json_decode($a,true);
+        $food = json_decode($a,true);
+        //菜品数量
+        if(isset($_SESSION['shoping'])){
+        	if($_SESSION['shoping'] != ''){
+        		$shoping = $_SESSION['shoping'];
+        		foreach ($shoping as $key => $value) {
+        			if($value['foodid'] == $id){
+        				$food['number'] = $value['number'];
+        			}
+        		}
+        	}
+        }
+        $data['foods'] = $food;
 		// 产品图片
 		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -807,7 +820,8 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
-		//var_Dump($data);
+  //   	echo "<pre>";
+		// var_Dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -1253,10 +1267,8 @@ class home extends CI_Controller
 	{
 		if($_POST){
 			$arr = $_POST;
-
 			$_SESSION['witer'] = $arr;
 			redirect('home/cart');
-
 		}
 	}
 

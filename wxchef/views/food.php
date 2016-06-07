@@ -79,7 +79,7 @@
           <input type="hidden" name='code' value="<?php if ($foods['foodkind'] == 1){if($foods['code'] == 1999){echo "1";}else{echo "0";}}elseif($foods['foodkind'] == 2){echo "2";}?>">
        <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false),addcart()"></span>
-          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">
+          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if(isset($foods['number'])){echo $foods['number'];}else{echo '0';}?>">
           <input type="hidden" value="<?=$foods['foodid'];?> " name='foodid'/> 
           <input type="hidden" value="<?=$shopid;?>" name='shopid'/>
           <span class="add am-icon-plus-circle" onClick="handle(this, true),delcart()"></span>
