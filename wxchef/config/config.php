@@ -23,11 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
- 
-<<<<<<< HEAD
-=======
- 
->>>>>>> 708656b2180028a1e9857e3723f2d1c57a556fc1
 $config['base_url'] = ''; //http://www.krfer.com/WXTEST2/
  
 /*

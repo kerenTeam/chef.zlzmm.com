@@ -820,7 +820,8 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
-		//var_Dump($data);
+  //   	echo "<pre>";
+		// var_Dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情

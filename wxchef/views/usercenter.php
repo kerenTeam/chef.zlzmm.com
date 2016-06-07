@@ -1,39 +1,21 @@
-  <?php
-  // if(!isset($_SESSION['userinfo'])){
-	  
-	// if (empty($_GET["code"]))
- //    {
- //     header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
- //    }
- //    $code = $_GET['code'];
- //    //获取access_token 用户令牌
- //    $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
- //    $res =json_decode(file_get_contents($url));
- //    $openId= $res->openid;
- //    $_SESSION['update_code'] = $res->access_token;
- //    $_token = $res->access_token;
- //    //获取用户数据
- //    $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
- //    $_SESSION['userinfo'] = json_decode(file_get_contents($url2),TRUE);
- //  }
-  ?>
+
   <body>
   <?php if(!empty($users)):?>
    <div class="userhead bred">
    <?php if(isset($_SESSION['userinfo'])): ?>
-     <?php if ($_SESSION['userinfo']): ?>
-       <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3>
-       <h4 style="font-weight: 400;"> 当前积分:<?php echo abs($users[0]['integral']); ?> </h4>
-        <?php if (empty($users[0]['userphone'])): ?>
-          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
-        <?php else: ?>
-          
-        <?php endif ?>
-     <?php else: ?>
-       <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
-     <?php endif;?>
+       <?php if ($_SESSION['userinfo']): ?>
+         <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
+         <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3>
+         <h4 style="font-weight: 400;"> 当前积分:<?php echo abs($users[0]['integral']); ?> </h4>
+          <?php if (empty($users[0]['userphone'])): ?>
+            <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
+          <?php else: ?>
+            
+          <?php endif ?>
+       <?php else: ?>
+         <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
+         <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
+       <?php endif;?>
     <?php endif; ?>
      <!-- <p class="am-margin-xs">&nbsp;&nbsp;&nbsp;川菜</p> -->
    </div>
@@ -45,7 +27,7 @@
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
        <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
        
-          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a> / <a href="<?php echo site_url('home/login2')?>" class="white">登录</a>
+          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
 
        
 
