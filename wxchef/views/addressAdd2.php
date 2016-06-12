@@ -32,7 +32,7 @@
       <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
         <fieldset class="am-form-set afiel">
 
-          <center> <div class="am-margin-sm" >
+          <center> <div class="am-margin-sm maptop">
             <img src="skin/img/addr.png" style="width: 2.5rem;" alt="">
              <span id="myaddressSpan"></span>
              <input type="hidden" name="myaddress" id="resultaddresstext" value="234567">

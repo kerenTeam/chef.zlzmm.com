@@ -2611,6 +2611,9 @@ figure a:hover figcaption {
     .topform button {
         left: 40px;
     }
+    .maptop {
+        margin-top: 4rem;
+    }
     .vimg2 {
         width: 9rem;
         height: 9.5rem;
