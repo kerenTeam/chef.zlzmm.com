@@ -1,18 +1,8 @@
-<link href="skin/css/city.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css" />
-<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5ea10305c1cb19f5289caf17d1424136"></script>
-<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
-<style type="text/css" media="screen">
-  #container {
-    position:static;
-    width: 100%;
-    height: 100%;
-}
-#tip,.amap-logo,.amap-copyright{
-  display:none;
-}
- 
-</style>
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=61eb3dd738aebf40b63eacbf3c447bdf"></script>
+<!-- <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+<!-- 逆地理编码 js  -->
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=61eb3dd738aebf40b63eacbf3c447bdf&plugin=AMap.Geocoder"></script>
 <body>
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -26,50 +16,23 @@
     
   </header>
   <br>
-  <div class="am-g ammake" style="margin-top: -2rem;">
+
+          <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
+          <div id="tip" style="top:70px;">
+            <span id="resultaddress"></span>
+          </div>
+
+          <div style="clear: both; margin-bottom: 60%;"></div>
+  <div class="am-g ammake">
     <div class="">
       <form class="am-form afcheck" action="<?=site_url('home/addressedit');?>" method="post">
-         <div class="mapAddress" style="overflow: hidden;">
-                <div id='container'></div>
-                <div id="tip"></div>
-        </div>
-        <fieldset class="am-form-set afiel">
-       <!--  <div class="am-u-sm-2 am-text-right">地址</div>
-        <div class="am-u-sm-10">
-          <div class="demo" style="margin-top:-0.5rem;">     
-              <div class="infolist"> 
-                <div class="liststyle">
-                  <span>
-                    <i>成都市</i>
-                    <ul>
-                      <li><a href="javascript:void(0)" alt="请选择城市">成都市</a></li>
-                    </ul>
-                    <input type="hidden" name="cho_City" value="成都市">
-                  </span>
-                  <span id="Area">
-                    <i>请选择地区</i>
-                    <ul>
-                      <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
-
-                    </ul>
-                    <input type="hidden" name="cho_Area" value="">
-                  </span>
-                  <span id="Insurer">
-                    <i>请选择街道</i>
-                    <ul>
-                      <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择街道</a></li>
-                    </ul>
-                    <input type="hidden" name="cho_Insurer" value="">
-                  </span>
-                </div>
-              </div> 
-          </div>
-        </div>
-		<div class="am-cf"></div> -->
-    <div class="am-margin-sm">
-          <img src="skin/img/addr.png" style="width: 2.5rem;" alt=""><span class="curAddress">成都市高新区天府五街美年广场。</span>
-          <input type="hidden" value="">
-        </div>
+         
+        <fieldset class="am-form-set afiel"> 
+        <center> <div class="am-margin-sm" >
+            <img src="skin/img/addr.png" style="width: 2.5rem;" alt="">
+             <span id="myaddressSpan"></span>
+             <input type="hidden" name="myaddress" id="resultaddresstext" value="234567">
+          </div> </center>
         <div class="am-u-sm-3 am-text-right">详细地址</div>
         <div class="am-u-sm-9">
           <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' required>
@@ -101,47 +64,66 @@
     </div>
   </div>
 </body>
-<!--  <script src="skin/js/jquery.min.js"></script> -->
-<script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
+ <script src="skin/js/jquery.min.js"></script>
  <script src="skin/js/amazeui.min.js"></script>
- <script>
-var map, geolocation;
-//加载地图，调用浏览器定位服务
-map = new AMap.Map('container', {
-    resizeEnable: true
-});
-map.plugin('AMap.Geolocation', function() {
+ <script type="text/javascript">
+  var map,
+    geolocation,
+    lnglatXY;
+  //加载地图，调用浏览器定位服务
+  map = new AMap.Map('container', {  resizeEnable: true, zoom: 64});
+  map.plugin('AMap.Geolocation', function() {
     geolocation = new AMap.Geolocation({
-        enableHighAccuracy: true, //是否使用高精度定位，默认:true
-        timeout: 10000, //超过10秒后停止定位，默认：无穷大
-        buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-        zoomToAccuracy: true, //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
-        buttonPosition: 'RB',
-        panToLocation: true, //定位成功后将定位到的位置作为地图中心点，默认：true
+      enableHighAccuracy: true, //是否使用高精度定位，默认:true
+      timeout: 10000, //超过10秒后停止定位，默认：无穷大
+      buttonOffset: new AMap.Pixel(15, 1), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+      zoomToAccuracy: true, //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+      buttonPosition: 'RB',
+      panToLocation: true, //定位成功后将定位到的位置作为地图中心点，默认：true
 
     });
     map.addControl(geolocation);
     geolocation.getCurrentPosition();
     AMap.event.addListener(geolocation, 'complete', onComplete); //返回定位信息
     AMap.event.addListener(geolocation, 'error', onError); //返回定位出错信息
-});
-//解析定位结果
-function onComplete(data) {
-    var str = ['定位成功'];
-    str.push('经度：' + data.position.getLng());
-    str.push('纬度：' + data.position.getLat());
-    str.push('精度：' + data.accuracy + ' 米');
-    str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-    document.getElementById('tip').innerHTML = str.join('<br>');
-}
-//解析定位错误信息
-function onError(data) {
+  });
+  //解析定位结果
+  function onComplete(data) {
+    lnglatXY = [data.position.getLng(), data.position.getLat()]; //已知点坐标
+    regeocoder(lnglatXY);
+    // var str = ['定位成功'];
+    //         str.push('经度：' + data.position.getLng());
+    //         str.push('纬度：' + data.position.getLat());
+    //         str.push('精度：' + data.accuracy + ' 米');
+    //         str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+    //         document.getElementById('tip').innerHTML = str.join('<br>');
+  }
+
+  //解析定位错误信息
+  function onError(data) {
     document.getElementById('tip').innerHTML = '定位失败';
-}
-//地图js结束
-
-
- 
+  }
+  function regeocoder(xyData) { //逆地理编码
+    var geocoder = new AMap.Geocoder({radius: 1000, extensions: "all"});
+    geocoder.getAddress(xyData, function(status, result) {
+      if (status === 'complete' && result.info === 'OK') {
+        geocoder_CallBack(result);
+      }
+    });
+    var marker = new AMap.Marker({ //加点
+      map: map,
+      position: xyData
+    });
+    map.setFitView();
+  }
+  function geocoder_CallBack(data) {
+    var address = data.regeocode.formattedAddress; //返回地址描述
+    document.getElementById("resultaddress").innerHTML = address;
+    document.getElementById("resultaddresstext").value = address;
+    document.getElementById("myaddressSpan").innerHTML = address;
+  }
+</script>
+ <script>
    $(function(){
       
      $('.bred').click(function() { 
@@ -175,6 +157,4 @@ function onError(data) {
        });
    })
  </script>
-<script type="text/javascript" src="skin/js/city4.city.js"></script>
-<script type="text/javascript" src="skin/js/city4.js"></script>
 </html>

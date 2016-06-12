@@ -34,7 +34,19 @@ h2.tip{margin:20px;font-size: 18px}
   ?> 
 
   <!-- 注册弹框 -->
- 
+  <?php if(!isset($_SESSION['phone']) && empty($_SESSION['userinfo']['openid'])):?>
+  <div class="tk">
+    <div class="tkcontent">
+      <span><img class="closetk" src="skin/img/closetk.png" alt="大厨到家"></span>
+      <img src="skin/img/tk.png" class="renote" alt="大厨到家">
+      <div class="tktxt">
+        <div class="am-text-sm">亲，你还没有注册哟！注册即可享优惠</div>
+        <a class="rega" href="<?php echo site_url('home/register')?>">立即注册</a>
+        <p class="am-text-xs">已注册，直接<a class="red" href="<?php echo site_url('home/login2')?>"> 登录</a></p>
+      </div>
+    </div>
+  </div>
+  <?php endif;?>
   <!-- 搜索 -->
   <div class="am-g searchFix">
     <span class="am-icon-search"></span>
