@@ -8,7 +8,7 @@
          <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3>
          <h4 style="font-weight: 400;"> 当前积分:<?php echo abs($users[0]['integral']); ?> </h4>
           <?php if (empty($users[0]['userphone'])): ?>
-            <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
+            <a href="<?php echo site_url('home/binding')?>" >绑定手机号</a>
           <?php else: ?>
             
           <?php endif ?>
@@ -27,7 +27,7 @@
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
        <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
        
-          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
+          <a href="<?php echo site_url('home/binding')?>" >绑定手机号</a>
 
        
 

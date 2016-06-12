@@ -161,7 +161,7 @@ class home extends CI_Controller
 			
 		}
 	}
-	
+	// 注册用户
 	public function registeradd(){
 
 		 $reigsterFrom = array('UserPwd' => md5($this->input->post('UserPwd')),'UserPhone' => $this->input->post('UserPhone'));
@@ -181,6 +181,29 @@ class home extends CI_Controller
          		echo "<script>alert('该号码已注册！'); window.location.href='login2';</script>";  //？登陆
          		break;	
          }
+	}
+
+	// 微信绑定手机号码
+	public function binding()
+	{
+		if($_POST){
+			$data = array('UserPhone' => $this->input->post('UserPhone'),'openid'=>$_SESSION['userinfo']['openid']);
+			$bangdata = json_encode($data);
+			$banisok = curl_post(POSTAPI.'API_User?dis=weixin',$bangdata);
+			switch ($banisok) {
+				case '0':
+					echo "<script>alert('绑定失败');window.location.href='binding';</script>";
+					break;
+				case '1':
+					echo "<script>alert('绑定成功！');window.location.href='index';</script>";
+					break;
+				case '2':
+					echo "<script>alert('该号码已被绑定，请换一个新的手机号。');window.location.href='binding';</script>";
+					break;
+			}
+		}else{
+			$this->load->view('binding');
+		}
 	}
 	
 	//首页
@@ -543,7 +566,6 @@ class home extends CI_Controller
 			$_SESSION['userinfo'],
 		    $_SESSION['shoping'],
 		    $_SESSION['booking'],
-		    $_SESSION['phone'],
 		    $_SESSION['witer'],
 		    $_SESSION['eleg'],
 		    $_SESSION['cerearr'],
@@ -739,7 +761,7 @@ class home extends CI_Controller
 				}
 				$this->load->view('set',$data);
 		}else{
-			echo "<script>alert('你还没有登陆!');window.location.href='login2';</script>";
+			echo "<script>alert('你还没有绑定手机号!');window.location.href='binding';</script>";
 		}
 	}
 	//更改用户资料
@@ -821,7 +843,7 @@ class home extends CI_Controller
     		$data['record'] = '';
     	}
   //   	echo "<pre>";
-		// var_Dump($data);
+		// var_Dump($data['record']);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -859,7 +881,7 @@ class home extends CI_Controller
 	//新增address
 	public function addressAdd2(){
 		if(!isset($_SESSION['phone'])){
-			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			echo "<script>alert('你还没有绑定手机号！');window.location.href='binding';</script>";
 		}else{
 		    $a['UserPhone'] = $_SESSION['phone'];
 		}
@@ -961,17 +983,17 @@ class home extends CI_Controller
 				$data['balance'] = $_GET['balance'];
 				$this->load->view('vip',$data);
 			}else{
-				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+				echo "<script>alert('您还没有绑定手机号。');window.location.href='binding';</script>";exit;
 			}
 	}
 	//会员卡
 	public function vipCard(){
 		if(isset($_SESSION['phone'])){
 			if($_SESSION['phone'] == ''){
-				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+				echo "<script>alert('你还没有绑定手机号！');window.location.href='binding';</script>";exit;
 			}
 		}else{
-			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			echo "<script>alert('你还没有绑定手机号！');window.location.href='binding';</script>";exit;
 		}
 		$vip = file_get_contents(POSTAPI.'API_Grades');
 		$data['vip'] = json_decode(json_decode($vip),true);

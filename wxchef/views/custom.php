@@ -15,7 +15,6 @@
   <div class="customBanner">
     <img src="skin/img/custom.png" alt="">
   </div>
-   <!-- action="<?=site_url('home/customServ');?>" method="post" -->
   <div class="am-form am-form-horizontal">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>

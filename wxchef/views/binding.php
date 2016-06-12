@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="skin/css/login.css">
+<style type="text/css">
+html {
+	height: 100%;
+	background-color: white;
+}
+</style>
+</head>
+
+<body class="register">
+<form method="post" action="<?=site_url('home/binding');?>" class="form_test" id="regForm">
+  <div class="first">
+    <div class="reg_input flex">
+      <label>中国 +86</label>
+      <input type="tel" placeholder="请输入手机号码" name="UserPhone" id='userphone'/>
+    </div>
+    <div class="reg_test">
+      <input type="text"  placeholder="输入验证码" name='code'/>
+      <input type="button" onclick="yzm(this)" value="获取验证码" />
+    </div>
+    <div class="user_agreement">
+      <label class="am-radio am-success">
+        <input type="checkbox" checked data-am-ucheck/>
+        <span class="user">我已阅读并同意<a href="<?php echo site_url('home/protocol')?>">《大厨到家》</a>用户手册.</span> </label>
+    </div>
+  </div>
+ 
+  <div class="reg_btn">
+    <button type="submit" class="am-btn am-btn-success">绑定</button>
+  </div>
+</form>
+<div class="shade">
+  <div> <span class="am-icon-meh-o"></span>
+    <p>请输入正确的手机号码</p>
+  </div>
+</div>
+
+<!--[if (gte IE 9)|!(IE)]><!--> 
+<script src="skin/js/jquery.min.js"></script> 
+<!--<![endif]--> 
+<script src="skin/js/amazeui.min.js"></script> 
+<script type="text/javascript"> 
+		 var code = '';
+		// 验证是否同意协议
+			function yzm(input){
+		 	var phone = $("#userphone").val();
+		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+		 		shade('am-icon-meh-o','请输入正确的手机号码');
+		 	}
+		 	else{
+		 		time(input);
+		 		$.ajax({
+		 			type: "post",
+		 			url: "<?=site_url('pricesearch/send');?>",
+		 			data: {"UserPhone":+phone},
+		 			success: function(data){
+		 				console.log(data);
+		 				code = data;
+		 			}
+		 		});
+                // code = "123456";
+		 	}
+
+		}
+		   
+		// 绑定提交按钮
+		$('#regForm').bind('submit',function(){
+			//alert('123');
+			var tell = $(".reg_input input[type='tel']").val();
+			var test = $(".reg_test input[type='text']").val();
+			if(tell == ''){
+				shade('am-icon-meh-o','请输入手机号');
+				return false;
+			}
+			else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(tell))){
+				shade('am-icon-meh-o','请输入正确的手机号码');
+				return false;
+			}
+
+			else if(test == ''){
+				shade('am-icon-meh-o','请输入验证码');
+				return false;
+			}
+		    else if(test != code.toString()){
+				shade('am-icon-meh-o','验证码输入错误');
+				return false;
+			}
+			else if(test == code.toString()){
+			 	return true;
+			}
+			
+		
+		});
+		// 提示框
+		function shade(icon,cue){
+				$('.shade').addClass('up');
+				setTimeout(function(){$('.shade').removeClass('up');},1000);
+				$('.shade div').remove();
+				$('.shade').append('<div><span class="'+icon+'"></span><p>'+cue+'</p></div>');
+		} 
+	
+		var wait = 60;
+		function time(o) {  
+        if (wait == 0) {  
+            o.removeAttribute("disabled");            
+            o.value="获取验证码";  
+            wait = 60;  
+
+        } else {  
+        	
+            o.setAttribute("disabled", true);  
+            o.value="重新发送(" + wait + ")";  
+            wait--;  
+            setTimeout(function() {  
+                time(o)  
+            },
+            1000)
+        }
+		}
+
+</script>
+</body>
+</html>

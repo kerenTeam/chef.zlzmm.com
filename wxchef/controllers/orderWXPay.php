@@ -34,10 +34,10 @@ class orderWXPay extends CI_Controller{
     public function order(){
     	if ($_POST){
             if(!isset($_SESSION['phone'])){
-                echo "<script>alert('你还没有登陆！');window.location.href='".site_url('home/login')."';</script>";
+                echo "<script>alert('你还没有绑定手机号！');window.location.href='".site_url('home/binding')."';</script>";
             }else{   
                 if($_SESSION['phone'] == NULL){
-                    echo "<script>alert('你还没有登陆！');window.location.href='".site_url('home/login')."';</script>";
+                    echo "<script>alert('你还没有绑定手机号！');window.location.href='".site_url('home/binding')."';</script>";
                 }else{
 
                     if ($this->input->post('servmoneydata')) {
@@ -272,7 +272,8 @@ class orderWXPay extends CI_Controller{
     }
 //购买｜充值会员卡  页面
     public function payCardPage()
-    {   if ($_SESSION['phone'] == null) {
+    {   
+        if ($_SESSION['phone'] == null) {
         echo "<script>alert('为保证安全，请重新登录！');window.location.href='".site_url('home/login')."';</script>"; exit;
         }
         $PayVipCard['UserPhone'] = $_SESSION['phone'];
