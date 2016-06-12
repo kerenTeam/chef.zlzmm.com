@@ -53,6 +53,11 @@ window.onload = function() {
     }
     servFee(paymoney);
     fens.innerHTML = fen;
+    if (fen == 0) {
+        fens.style.display = 'none';
+    } else {
+        fens.style.display = '';
+    }
     allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
 
@@ -131,6 +136,11 @@ function handle(self, isAdd) {
     }
     servFee(paymoney);
     fens.innerHTML = fen;
+    if (fen == 0) {
+        fens.style.display = 'none';
+    } else {
+        fens.style.display = '';
+    }
     countEl.value = curCount;
     allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }

@@ -2,6 +2,7 @@
 
 html {
     overflow-y: visible;
+    /* font-size: 65.5%; */
 }
 
 body {
@@ -28,9 +29,9 @@ body {
     top: -2px;
     bottom: 0;
     color: white;
-    width: 1.7rem;
-    height: 1.7rem;
-    line-height: 1.7rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
     border-radius: 50%;
     "
 
@@ -638,7 +639,7 @@ body {
 }
 
 .a img {
-    width: 2rem;
+    width: 3rem;
 }
 
 .b {
@@ -1048,14 +1049,6 @@ body {
     border: 1px solid white;
     border-radius: 30px;
     padding: 5px;
-}
-
-.cmn .am-list>li>a.am-active,
-.am-list>li>a.am-active:focus,
-.am-list>li>a.am-active:hover {
-    border-left: 2px solid #ED3F59;
-    background: rgba(248, 85, 84, 0.27);
-    color: #ED3F59;
 }
 
 .clist li {
