@@ -4,7 +4,7 @@
   
 <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
-          <a href="javascript:" onclick="javascript:history.go(-1);">
+          <a href="<?=site_url('home/orderRe');?>" >
 
                 <i class="am-header-icon am-icon-chevron-left"></i>
           </a>
@@ -43,7 +43,7 @@
 <?php endif;?>
 </ul>
 </div>
-
+<?php if($foods[0]['isevaluate'] != 1):?>
   <form  id="commentform" method="post">
     
   <!-- 保存打分内容 -->
@@ -104,6 +104,9 @@
     	<input type="button" class="publish" value="发表评论">
     </div>
   </form>
+<?php else:?>
+   
+<?php endif;?>
   <div class="infos">
   		<h3>订单详情</h3>
   		<ul>

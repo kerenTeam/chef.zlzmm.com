@@ -1,8 +1,12 @@
+<<<<<<< HEAD
+<link href="skin/css/city.css" rel="stylesheet" type="text/css" />
+=======
 <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=61eb3dd738aebf40b63eacbf3c447bdf"></script>
 <!-- <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script> -->
 <!-- 逆地理编码 js  -->
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=61eb3dd738aebf40b63eacbf3c447bdf&plugin=AMap.Geocoder"></script>
+>>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
 <body>
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -16,11 +20,40 @@
     
   </header>
   <br>
+<<<<<<< HEAD
+  <div class="am-g ammake">
+    <div class="">
+      <form class="am-form afcheck" action="<?=site_url('home/addressedit');?>" method="post">
+        <fieldset class="am-form-set afiel">
+        <div class="am-u-sm-2 am-text-right">地址</div>
+        <div class="am-u-sm-10">
+          <div class="demo" style="margin-top:-0.5rem;">     
+              <div class="infolist"> 
+                <div class="liststyle">
+                  <span>
+                    <i>成都市</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择城市">成都市</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_City" value="成都市">
+                  </span>
+                  <span id="Area">
+                    <i>请选择地区</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
+=======
+>>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
 
           <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
           <div id="tip" style="top:70px;">
             <span id="resultaddress"></span>
           </div>
+<<<<<<< HEAD
+        </div>
+		<div class="am-cf"></div>
+        <div class="am-u-sm-2 am-text-right">详细地址</div>
+        <div class="am-u-sm-10">
+=======
 
           <div style="clear: both; margin-bottom: 60%;"></div>
   <div class="am-g ammake">
@@ -35,21 +68,22 @@
           </div> </center>
         <div class="am-u-sm-3 am-text-right">详细地址</div>
         <div class="am-u-sm-9">
+>>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
           <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' required>
         </div>
         <div class="am-cf"></div>
-        <div class="am-u-sm-3 am-text-right">姓名</div>
-        <div class="am-u-sm-9">
+        <div class="am-u-sm-2 am-text-right">姓名</div>
+        <div class="am-u-sm-10">
           <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required value="<?=$address[0]['name'];?>">
         </div>
         <div class="am-cf"></div>
-        <div class="am-u-sm-3 am-text-right">电话</div>
-        <div class="am-u-sm-9">
+        <div class="am-u-sm-2 am-text-right">电话</div>
+        <div class="am-u-sm-10">
           <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone" value="<?=$address[0]['goodsphone'];?>">
         </div>
         <div class="am-cf"></div>
-        <div class="am-u-sm-3 am-text-right">备用</div>
-        <div class="am-u-sm-9">
+        <div class="am-u-sm-2 am-text-right">备用</div>
+        <div class="am-u-sm-10">
           <input type="text" placeholder="备用联系电话（选填）" name='SparePhone' value="<?=$address[0]['sparephone'];?>"> 
         </div>
         <div class="am-cf"></div>
@@ -66,6 +100,8 @@
 </body>
  <script src="skin/js/jquery.min.js"></script>
  <script src="skin/js/amazeui.min.js"></script>
+<<<<<<< HEAD
+=======
  <script type="text/javascript">
   var map,
     geolocation,
@@ -123,6 +159,7 @@
     document.getElementById("myaddressSpan").innerHTML = address;
   }
 </script>
+>>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
  <script>
    $(function(){
       
@@ -131,14 +168,14 @@
         var name = $('.uname').val();
         var address = $('.uaddress').val();
         var phone = $('.uphone').val();
-        // var city = $('input[name="cho_City"]').val();
-        // var area = $('input[name="cho_Area"]').val();
-        // var Insurer = $('input[name="cho_Insurer"]').val();
-        // if(area=='' || Insurer=='请选择街道' || address==''){
-        //    // $('.bred').removeAttr('disabled');
-        //    alert('请输入完整地址');
-        //    return false;
-        // }
+        var city = $('input[name="cho_City"]').val();
+        var area = $('input[name="cho_Area"]').val();
+        var Insurer = $('input[name="cho_Insurer"]').val();
+        if(area=='' || Insurer=='请选择街道' || address==''){
+           // $('.bred').removeAttr('disabled');
+           alert('请输入完整地址');
+           return false;
+        }
         if(name==''){
            // $('.bred').removeAttr('disabled');
            alert('请输入用户名');

@@ -110,9 +110,10 @@
               echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
               break;
             case '8':
+            case '9':
               if($value['IsEvaluate'] == '0'){
 
-                echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
+                  echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
               }else{
                   foreach ($food as $key => $v) {
                     if($v['State'] == '0'){
@@ -122,14 +123,10 @@
                   if($a == 1){
                       echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
                     }else{
-                       echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>已评价</a>";
+                       // echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>已评价</a>";
+                       echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
                     }
               }
-             
-              echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
-              break;
-            case '9':
-              echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
               echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
             case '10':
