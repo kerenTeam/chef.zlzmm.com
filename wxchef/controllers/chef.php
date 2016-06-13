@@ -36,6 +36,11 @@ class chef extends CI_Controller
         $data['chef'] = json_decode(json_decode($ch.'"'),true);
         $this->load->view('chef/chefManage',$data);
     }
+    //厨师订单历史 
+    public function chefOrderHistory()
+    {    
+        $this->load->view('chef/chefOrderHistory');
+    }
     //厨师订单详情
     public function chefOrder()
     {

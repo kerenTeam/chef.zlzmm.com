@@ -1,14 +1,15 @@
 <link rel="stylesheet" type="text/css" href="skin/css/order.css">
 <body>
   <header data-am-widget="header" class="am-header am-header-default topform">
-    <div class="am-header-left am-header-nav">
-   <!--    <a href="<?php echo site_url('home/index');?>">
-        <i class="am-header-icon am-icon-chevron-left"></i>
-      </a> -->
-    </div>
+    
     <h1 class="am-header-title">
     厨师管理
     </h1>
+    <div class="am-header-right am-header-nav">
+      <a href="<?php echo site_url('chef/chefOrderHistory');?>">
+        订单历史
+      </a>
+    </div>
   </header> 
   <?php if(empty($chef)):?>
     <div class="am-padding-sm manageOrder">您没有订单！ <div class="manageOrderStatus"><a  href="javacript:;" onclick='myrefresh();' class="btn am-btn am-btn-warning" title="">刷新</a></div>
