@@ -208,6 +208,7 @@ class home extends CI_Controller
 	
 	//首页
 	public function index(){
+
 		// 获取菜价
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 		$data['caijia'] = json_decode(json_decode($caijia),true);
