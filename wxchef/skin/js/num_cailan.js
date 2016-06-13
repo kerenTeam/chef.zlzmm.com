@@ -21,6 +21,11 @@ window.onload = function() {
     }
 
     fens.innerHTML = fen;
+    if (fen == 0) {
+        fens.style.display = 'none';
+    } else {
+        fens.style.display = '';
+    }
     allmoney.innerHTML = paymoney.toFixed(2);
 }
 
@@ -77,9 +82,7 @@ function handle(self, isAdd) {
         countEl.style.display = "inline-block";
         paymoney += parseFloat(price);
 
-        fens.innerHTML = fen;
-        countEl.value = curCount;
-        allmoney.innerHTML = paymoney.toFixed(2);
+
 
         addcart()
             // prabola();
@@ -98,8 +101,14 @@ function handle(self, isAdd) {
         }
 
 
-        fens.innerHTML = fen;
-        countEl.value = curCount;
-        allmoney.innerHTML = paymoney.toFixed(2);
+
     }
+    if (fen == 0) {
+        fens.style.display = 'none';
+    } else {
+        fens.style.display = '';
+    }
+    fens.innerHTML = fen;
+    countEl.value = curCount;
+    allmoney.innerHTML = paymoney.toFixed(2);
 }

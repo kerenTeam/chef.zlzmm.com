@@ -4,7 +4,6 @@
 <!-- 逆地理编码 js  -->
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=61eb3dd738aebf40b63eacbf3c447bdf&plugin=AMap.Geocoder"></script>
 
-<link href="skin/css/city.css" rel="stylesheet" type="text/css"/>
 
 <body >
 
@@ -21,19 +20,28 @@
   </header>
   <br>
 
+<<<<<<< HEAD
           <div  id='container' style="max-height: 250px !important;"></div>  <!--  onload="regeocoder()" -->
           <div id="tip">
+=======
+          <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
+          <div id="tip" style="top:70px;">
+>>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
             <span id="resultaddress"></span>
           </div>
 
           <div style="clear: both; margin-bottom: 60%;"></div>
 
-  <div class="am-g ammake" style="margin-top: -2rem;">
+  <div class="am-g ammake">
     <div class="">
       <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
         <fieldset class="am-form-set afiel">
 
+<<<<<<< HEAD
           <center> <div class="am-margin-sm" >
+=======
+          <center> <div class="am-margin-sm maptop">
+>>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
             <img src="skin/img/addr.png" style="width: 2.5rem;" alt="">
              <span id="myaddressSpan"></span>
              <input type="hidden" name="myaddress" id="resultaddresstext" value="234567">
@@ -72,8 +80,7 @@
     </div>
   </div>
 </body>
-<!--  <script src="skin/js/jquery.min.js"></script> -->
-<script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
+<script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 
 <script type="text/javascript">
@@ -168,8 +175,6 @@
     });
   })
 </script>
-<script type="text/javascript" src="skin/js/city4.city.js"></script>
-<script type="text/javascript" src="skin/js/city4.js"></script>
 
 </body>
 
