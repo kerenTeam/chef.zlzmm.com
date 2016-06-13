@@ -276,14 +276,6 @@ class home extends CI_Controller
 		$data['foods'] = $foods;
 		$this->load->view('cailan',$data);
 	}
-///
-///  ajax 实现实时菜价缓存
-///
-    public function ajaxtocart()
-    {	echo "<pre>";
-        var_dump($this->input->post());
-        echo "</pre>";
-    }
 
 
 	//点菜
@@ -662,6 +654,14 @@ class home extends CI_Controller
 		redirect('home/cart');
 	}
 
+	// 清空购物车
+	public function emptycart()
+	{
+		if($_GET){
+			unset($_SESSION['shoping']);
+			redirect('home/cart');
+		}
+	}
 
 	// 减去菜品数量
 	public function deletecart()

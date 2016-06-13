@@ -19,19 +19,18 @@ h2.tip{margin:20px;font-size: 18px}
 		  $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
 		  $res =json_decode(file_get_contents($url));
 		  $openId= $res->openid;
-		  
-		  var_dumP($openId);
 		  $_SESSION['openid'] = $openId;
 		  
 		  $_SESSION['update_code'] = $res->access_token;
 		  $_token = $res->access_token;
 		//  获取用户数据
 		  $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
-		  $_SESSION['userinfo'] = json_decode(file_get_contents($url2),TRUE);
+		  $userinfo = json_decode(file_get_contents($url2),TRUE);
+       $this->session->set_tempdata('userinfo', $userinfo, 18000);
 		  $phone = file_get_contents(POSTAPI.'API_User?dis=login&UserPhone='.$openId);
 		  $userphone = json_decode($phone);
 		  if($userphone != '0'){
-			$_SESSION['phone'] = $userphone;
+      $this->session->set_tempdata('phone', $userphone, 18000);
 		  }
 	}
   ?> 

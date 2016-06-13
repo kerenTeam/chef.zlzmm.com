@@ -14,7 +14,6 @@
       <a href="javascript:;" onClick="$('#my-confirm').modal('open');">
         清空
       </a> 
-      
     </div>
 </header>
 
@@ -51,7 +50,7 @@ function doaction(obj) {
     </div>
     <div class="am-modal-footer">
       <span class="am-modal-btn gray" data-am-modal-cancel>取消</span>
-      <span class="am-modal-btn green" data-am-modal-confirm>确定</span>
+      <span class="am-modal-btn green" onClick="delJump()">确定</span>
     </div>
   </div>
 </div>
@@ -119,7 +118,10 @@ function doaction(obj) {
                   <input type="text" class="numTxt" onkeypress="return IsNum(event)" oninput="ueserWrite(this)"  onkeydown="keydown(this)" name="numbers[]" value="<?=$cart['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
+                 <?php if($food['code'] != 1999):?>
                  <a href="<?php echo site_url('home/change?id=').$food['foodid'].'&pid='.$food['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
+                 <?php endif;?>
+      
                 <a href="<?=site_url('home/delcart?id=').$id;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>  
@@ -273,4 +275,10 @@ function doaction(obj) {
 <script src="skin/js/num.js"></script>
 <script src="skin/js/service.js"></script>
 </body>
+<script>
+ function delJump(){
+    window.location.href='<?=site_url('home/emptycart?id=1');?>';
+   }
+ 
+</script>
 </html>
