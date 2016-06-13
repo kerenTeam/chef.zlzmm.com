@@ -15,8 +15,8 @@
     <div class="manageOrder am-padding-sm am-shadow am-margin-bottom-lg">
       <a href="<?php echo site_url('chef/chefOrder');?>">
         <p class="am-cf manageBor botbor">
-          <span class="am-fl">订单号1234345454</span>
-          <span class="am-fr">下单时间2016-06-05</span>
+          <span class="am-fl am-text-sm">订单号1234345454</span>
+          <span class="am-fr am-text-sm">下单时间2016-06-05</span>
         </p>
         <p>付款金额<span class="am-icon-cny am-text-lg am-fr red">499</span></p>
         <p>用户姓名<span class="am-fr">张三</span></p>
@@ -28,8 +28,8 @@
     <div class="manageOrder am-padding-sm am-shadow am-margin-bottom-lg">
       <a href="<?php echo site_url('chef/chefOrder');?>">
         <p class="am-cf manageBor botbor">
-          <span class="am-fl">订单号1234345454</span>
-          <span class="am-fr">下单时间2016-06-05</span>
+          <span class="am-fl am-text-sm">订单号1234345454</span>
+          <span class="am-fr am-text-sm">下单时间2016-06-05</span>
         </p>
         <p>付款金额<span class="am-icon-cny am-text-lg am-fr red">499</span></p>
         <p>用户姓名<span class="am-fr">张三</span></p>
