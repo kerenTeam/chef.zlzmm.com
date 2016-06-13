@@ -39,13 +39,11 @@ class chef extends CI_Controller
     //厨师订单历史 
     public function chefOrderHistory()
     {    
-<<<<<<< HEAD
         //获取厨师订单历史
         $cheforder = file_get_contents('http://192.168.199.154/API/API_Poorder?dis=cookhos&UserPhone='.$_SESSION['username']);
         var_dump($_SESSION['username']);
         var_dump($cheforder);
-=======
->>>>>>> 4340efba683cf520750d6d9de1d8c9200ba3fa1f
+
         $this->load->view('chef/chefOrderHistory');
     }
     //厨师订单详情
