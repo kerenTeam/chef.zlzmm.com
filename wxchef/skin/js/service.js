@@ -39,6 +39,11 @@
      servTotal1.value = sernum * parseFloat(serprice.innerHTML);
      console.log(servTotal1.value);
      fens.innerHTML = fen;
+     if (fen == 0) {
+         fens.style.display = 'none';
+     } else {
+         fens.style.display = '';
+     }
      allmoney.innerHTML = (parseFloat(allmoney.innerHTML) - parseFloat(serprice.innerHTML)).toFixed(2);
  }
 
@@ -52,6 +57,11 @@
      servTotal1.value = sernum * parseFloat(serprice.innerHTML);
      console.log(servTotal1.value);
      fens.innerHTML = fen;
+     if (fen == 0) {
+         fens.style.display = 'none';
+     } else {
+         fens.style.display = '';
+     }
      allmoney.innerHTML = (parseFloat(allmoney.innerHTML) + parseFloat(serprice.innerHTML)).toFixed(2);
  }
 
@@ -90,6 +100,11 @@
      servTotal2.value = sernum2 * parseFloat(serprice2.innerHTML);
      console.log(servTotal2.value);
      fens.innerHTML = fen;
+     if (fen == 0) {
+         fens.style.display = 'none';
+     } else {
+         fens.style.display = '';
+     }
      allmoney.innerHTML = (parseFloat(allmoney.innerHTML) - parseFloat(serprice2.innerHTML)).toFixed(2);
  }
 
@@ -103,5 +118,10 @@
      servTotal2.value = sernum2 * parseFloat(serprice2.innerHTML);
      console.log(servTotal2.value);
      fens.innerHTML = fen;
+     if (fen == 0) {
+         fens.style.display = 'none';
+     } else {
+         fens.style.display = '';
+     }
      allmoney.innerHTML = (parseFloat(allmoney.innerHTML) + parseFloat(serprice2.innerHTML)).toFixed(2);
  }
