@@ -20,13 +20,9 @@
   </header>
   <br>
 
-<<<<<<< HEAD
-          <div  id='container' style="max-height: 250px !important;"></div>  <!--  onload="regeocoder()" -->
-          <div id="tip">
-=======
+
           <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
           <div id="tip" style="top:70px;">
->>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
             <span id="resultaddress"></span>
           </div>
 
@@ -37,11 +33,7 @@
       <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
         <fieldset class="am-form-set afiel">
 
-<<<<<<< HEAD
-          <center> <div class="am-margin-sm" >
-=======
           <center> <div class="am-margin-sm maptop">
->>>>>>> e1dfe973eadb6ce49cd326ca3947f4d4e3daf1d4
             <img src="skin/img/addr.png" style="width: 2.5rem;" alt="">
              <span id="myaddressSpan"></span>
              <input type="hidden" name="myaddress" id="resultaddresstext" value="234567">

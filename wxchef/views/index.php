@@ -8,8 +8,8 @@ h2.tip{margin:20px;font-size: 18px}
 <body>
   
    <?php
- 
-	// if(!isset($_SESSION['phone'])){
+// var_dump($_SESSION['phone']);
+	if(!isset($_SESSION['phone'])){
      // if (empty($_GET["code"]))
       // {
        // header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
@@ -31,7 +31,9 @@ h2.tip{margin:20px;font-size: 18px}
       // if($userphone != '0'){
         // $_SESSION['phone'] = $userphone;
       // }
-	// }
+       $_SESSION['phone'] = $userphone;
+	}
+    
   ?> 
 
   <!-- 注册弹框 -->
