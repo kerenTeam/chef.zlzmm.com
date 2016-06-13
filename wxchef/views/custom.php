@@ -22,12 +22,20 @@
     <div id="tip" style="top:70px;">
       <span id="resultaddress"></span>
     </div>
-  <div class="am-form am-form-horizontal" style="margin-top: 16rem;margin-bottom: 1rem;">
+  <div class="am-form am-form-horizontal" style="margin-top: 16rem;margin-bottom: 6rem;">
   
     <div  class="am-text-center" style="margin-top:10rem;">
       <img src="skin/img/addr.png" style="width: 2.5rem;" alt="">
       <span id="myaddressSpan"></span>
       <input type="hidden" name="myaddress" id="resultaddresstext" value="234567">
+    </div>
+    <br>
+    <div class="am-form-group">
+      <label class="am-u-sm-2 am-text-right">地址</label>
+      <div class="am-u-sm-10">
+        <input id="address" class="am-radius" type="text" placeholder="定位不准确？" name="address"> 
+      </div>
+      <div class="am-u-sm-1"></div>
     </div>
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">桌数</label>
@@ -165,6 +173,7 @@ $(function(){
 $('.liststyle ul').css('overflow','scroll');
 $('.cusForm').on('click',function(){
 var phone = $("#phone").val();
+var adr = $("#address").val();
 var tableNum = $("#select1 option:selected").text();
 var address = $("#resultaddresstext").val();
 console.log(tableNum);
@@ -181,7 +190,7 @@ return false;
 $.ajax({
 type:"POST",
 url:'<?=site_url('pricesearch/customSer');?>',
-data:'phone='+phone+'&tableNum='+tableNum+'&address='+address,
+data:'phone='+phone+'&tableNum='+tableNum+'&address='+address+'&addressWrite='+adr,
 success:function(data){
 console.log(data);
 if(data == 1){
