@@ -12,32 +12,26 @@
     </h1>
   </header>
   <div class="manage am-margin-bottom-sm">
+  <?php if(!empty($chefOrder)):?>
+    <?php foreach($chefOrder as $val):?>
     <div class="manageOrder am-padding-sm am-shadow am-margin-bottom-lg">
-      <a href="<?php echo site_url('chef/chefOrder');?>">
+      <a href="<?php echo site_url('chef/chefOrder?id=').$val['poorderid'];?>">
         <p class="am-cf manageBor botbor">
-          <span class="am-fl am-text-sm">订单号1234345454</span>
-          <span class="am-fr am-text-sm">下单时间2016-06-05</span>
+          <span class="am-fl am-text-sm">订单号:<?=$val['billno'];?></span>
+          <span class="am-fr am-text-sm">下单时间:<?=$val['billdate'];?></span>
         </p>
-        <p>付款金额<span class="am-icon-cny am-text-lg am-fr red">499</span></p>
-        <p>用户姓名<span class="am-fr">张三</span></p>
-        <p>电话号码<span class="am-fr">15789754345</span></p>
-        <p>服务地址<span class="am-fr">成都市高新区天府五街美年广场</span></p>
-        <p>服务时间<span class="am-fr">2016-06-06</span></p>
+        <p>付款金额<span class="am-icon-cny am-text-lg am-fr red"><?=$val['amount'];?></span></p>
+        <p>用户姓名<span class="am-fr"><?=$val['name'];?></span></p>
+        <p>电话号码<span class="am-fr">12344567</span></p>
+        <p>服务地址<span class="am-fr"><?=$val['address']?></span></p>
+        <p>服务时间<span class="am-fr"><?=$val['appointmenttime']?></span></p>
       </a>
     </div>
-    <div class="manageOrder am-padding-sm am-shadow am-margin-bottom-lg">
-      <a href="<?php echo site_url('chef/chefOrder');?>">
-        <p class="am-cf manageBor botbor">
-          <span class="am-fl am-text-sm">订单号1234345454</span>
-          <span class="am-fr am-text-sm">下单时间2016-06-05</span>
-        </p>
-        <p>付款金额<span class="am-icon-cny am-text-lg am-fr red">499</span></p>
-        <p>用户姓名<span class="am-fr">张三</span></p>
-        <p>电话号码<span class="am-fr">15789754345</span></p>
-        <p>服务地址<span class="am-fr">成都市高新区天府五街美年广场</span></p>
-        <p>服务时间<span class="am-fr">2016-06-06</span></p>
-      </a>
-    </div>
+    <?php endforeach;?>
+  <?php else:?>
+    <div>你还没有完成的订单！</div>
+  <?php endif;?>
+   
     </div>
   </body>
 </html>

@@ -19,14 +19,12 @@
 
   </header>
   <br>
+  <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
+  <div id="tip" style="top:70px;">
+    <span id="resultaddress"></span>
+  </div>
 
-
-          <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
-          <div id="tip" style="top:70px;">
-            <span id="resultaddress"></span>
-          </div>
-
-          <div style="clear: both; margin-bottom: 60%;"></div>
+  <div style="clear: both; margin-bottom: 60%;"></div>
 
   <div class="am-g ammake">
     <div class="">
