@@ -38,15 +38,17 @@ class chef extends CI_Controller
     }
     //厨师订单历史 
     public function chefOrderHistory()
-    {    
+    {     
         //获取厨师订单历史
-        $cheforder = file_get_contents('http://192.168.199.154/API/API_Poorder?dis=cookhos&UserPhone='.$_SESSION['username']);
-        var_dump($_SESSION['username']);
-        var_dump($cheforder);
-
-        $this->load->view('chef/chefOrderHistory');
+        $cheforder = file_get_contents(POSTAPI.'API_Poorder?dis=cookhos&UserPhone='.$_SESSION['username']);
+        // 去掉首尾引号
+        $order = ltrim(rtrim($cheforder,'"'),'"');
+        // 去掉 反斜杠
+        $a =   str_replace('\"','"',$order);
+        $data['chefOrder'] = json_decode($a,true);
+        $this->load->view('chef/chefOrderHistory',$data);
     }
-    //厨师订单详情
+    //厨师订单详情  
     public function chefOrder()
     {
         if($_GET){

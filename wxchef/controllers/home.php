@@ -890,7 +890,7 @@ class home extends CI_Controller
 		{
 			
 			$a['Name'] = $_POST['name'];
-			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'].$_POST['address'];
+			$a['Address'] = $_POST['myaddress'].'-'.$_POST['address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = $_POST['SparePhone'];
 			if(!isset($_POST['IsDefault'])){
@@ -898,6 +898,7 @@ class home extends CI_Controller
 			}else{
 				$a['IsDefault'] = $_POST['IsDefault'];
 			}
+			
 			$b = json_encode($a);
 			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz",$b);
 			if($postadd != ''){
