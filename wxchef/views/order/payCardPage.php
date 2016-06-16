@@ -128,21 +128,28 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 
       <?php if ( $_GET['Money'] >= 5000):?>
             <div style="position: relative;" style="color:rgb(248, 85, 84);">
-              <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
+              <a href="javascript:;"  class="am-cf adc" onclick="mall();"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
               <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt=""> 微信支付 </a>
-              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/zp_gray.png" class="payimg" alt="">支付宝支付</a>
+              <a  href="javascript:;" class="am-cf adc" disabled onclick="mall();"><img src="skin/img/zp_gray.png" class="payimg" alt="">支付宝支付</a>
+              <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
               <div class="gs"></div>
             </div>
       <?php else: ?>
-            <a href="javascript:;" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" class="am-cf adc" onclick="mall();"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" onclick="mall();" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <?php endif ?>
-
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+  
+    
 
 
       </div>
     </form>
   </body>
+  <script>
+  function mall(){
+    alert('该功能暂时没有开通，请使用微信支付。');
+  }
+
+  </script>
 </html>

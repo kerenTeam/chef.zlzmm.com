@@ -17,14 +17,10 @@
     
   </header>
   <br>
-
-
           <div  id='container' style="max-height: 250px !important;top:49px;"></div>  <!--  onload="regeocoder()" -->
           <div id="tip" style="top:70px;">
             <span id="resultaddress"></span>
           </div>
-
-
           <div style="clear: both; margin-bottom: 60%;"></div>
   <div class="am-g ammake">
     <div class="">
@@ -38,7 +34,8 @@
           </div> </center>
         <div class="am-u-sm-2 am-text-right">地址</div>
         <div class="am-u-sm-10">
-          <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' required>
+        <?php $a = strstr($address[0]['address'],'-');  $b = substr($a,1);?>
+          <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' value="<?=$b;?>" required>
         </div>
         <div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">姓名</div>

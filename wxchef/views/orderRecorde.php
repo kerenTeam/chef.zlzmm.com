@@ -39,7 +39,6 @@
                 break;
               case '1':
               case '2':
-              
               case '6':
                   echo "待服务";
                 break;
@@ -48,6 +47,7 @@
                   echo "服务中";
                 break;
               case '8':
+              case '9':
                   echo "待评价";
                 break;
               case '7':
@@ -102,7 +102,6 @@
               echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               break;
             case '1':
-            case '2':
             case '6':
                 echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
@@ -115,9 +114,13 @@
 
                   echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
               }else{
-                  foreach ($food as $key => $v) {
-                    if($v['State'] == '0'){
+                // echo "123";
+                foreach ($food as $key => $v) {
+                  if($v['State'] == '0'){
+                       // var_dump($v);
                       $a = '1';
+                    }else{
+                      $a = '0';
                     }
                   }
                   if($a == 1){

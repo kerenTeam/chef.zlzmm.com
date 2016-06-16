@@ -52,14 +52,19 @@ wx.config({
 ///
     // var titlekf=['互联网之子1','互联网之子2','互联网之子3','互联网之子4','互联网之子5','互联网之子6','互联网之子7','互联网之子8'];
     // var title = titlekf[Math.floor(Math.random()*titlekf.length)];
-    var title = '<?php echo $_SESSION['userinfo']['nickname']; ?> -- Biji Coffee Company';
-    var desc = 'Biji Company is looking for the best coffee in Indonesia, that is why the website of the Biji Coffee Company introduce the image of public and traveling company.';
-    var link = 'http://www.csswinner.com/details/biji-coffee-company/10426';
-    var imgUrl = '<?php echo $_SESSION['userinfo']['headimgurl']; ?>';
+    // var title = '<?php echo $_SESSION['userinfo']['nickname']; ?> -- Biji Coffee Company';
+    // var desc = 'Biji Company is looking for the best coffee in Indonesia, that is why the website of the Biji Coffee Company introduce the image of public and traveling company.';
+    // var link = 'http://www.csswinner.com/details/biji-coffee-company/10426';
+    // var imgUrl = '<?php echo $_SESSION['userinfo']['headimgurl']; ?>';
+
+    var title = '人生没有如果，时间不会重来';
+    var desc = '行走在如风过耳的红尘，乍看盛夏的漠然置之，心中皱起了无言的涟漪，在隐隐约约的影子里，我看到伊人哭泣的面容';
+    var link = 'http://img.jj59.com/upload/userup/109827/143G954c-P33.jpg';
+    var imgUrl = 'http://www.baidu.com/';
 
 </script>
 <!-- 分享响应 API -->
-<script src="<?php echo base_url('application/views/share/js/demo.js');?>"> </script>
+<script src="<?php echo base_url('wxchef/views/share/js/demo.js');?>"> </script>
 
 
 

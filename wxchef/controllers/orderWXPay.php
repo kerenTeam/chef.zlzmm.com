@@ -179,6 +179,13 @@ class orderWXPay extends CI_Controller{
 //跳转兼容
     public function jumpLink()
     {
+        unset(
+            $_SESSION['shoping'],      
+            $_SESSION['booking'],      
+            $_SESSION['witer'],    
+            $_SESSION['ceremoney'],
+            $_SESSION['eleg']
+        );
     	$this->load->view('order/payOrder');
     }	
 	// 返回购物车
@@ -268,7 +275,7 @@ class orderWXPay extends CI_Controller{
 			$_SESSION['eleg']
         );
 		
-     	redirect('home/orderRe');
+     	redirect('home/paySuccess');
     }
 //购买｜充值会员卡  页面
     public function payCardPage()

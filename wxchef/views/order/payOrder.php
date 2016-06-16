@@ -201,9 +201,9 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
       <?php if ( str_replace(".0000","00",$_SESSION['rePayData'][0]['MoneyAll']) >= 5000):?>
 
             <div  style="color:rgb(248, 85, 84);">
-              <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
-              <a  href="javascript:;" class="am-cf adc" disabled> &nbsp;<img src="skin/img/wp_gray.png" class="payimg" alt="">&nbsp;微信支付 </a>
-              <a  href="javascript:;" class="am-cf adc" disabled> &nbsp;<img src="skin/img/zp_gray.png" class="payimg" alt="">&nbsp;支付宝支付</a>
+              <a href="javascript:;"  class="am-cf adc" onclick="mall();"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
+              <a  href="javascript:;" class="am-cf adc" disabled > &nbsp;<img src="skin/img/wp_gray.png" class="payimg" alt="">&nbsp;微信支付 </a>
+              <a  href="javascript:;" class="am-cf adc" disabled onclick="mall();"> &nbsp;<img src="skin/img/zp_gray.png" class="payimg" alt="">&nbsp;支付宝支付</a>
               
        <!--        <div class="gs"></div> -->
               <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"> &nbsp;<img src="skin/img/op.png" class="payimg" alt="">&nbsp;线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
@@ -211,9 +211,9 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 
       <?php else: ?>
 
-            <a href="javascript:;" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" class="am-cf adc" onclick="mall();"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"> &nbsp;<img src="skin/img/wp.png" class="payimg" alt="">&nbsp;微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="javascript:;" class="am-cf adc"> &nbsp;<img src="skin/img/zp.png" class="payimg" alt="">&nbsp;支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" class="am-cf adc" onclick="mall();"> &nbsp;<img src="skin/img/zp.png" class="payimg" alt="">&nbsp;支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             
       <?php endif ?>
 
@@ -249,6 +249,8 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
           });
         }
 
-
+        function mall(){
+          alert('该功能暂时还没有开通，请用微信支付或会员卡支付');
+        }
       </script>
 </html>

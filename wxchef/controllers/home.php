@@ -50,7 +50,6 @@ class home extends CI_Controller
 			$data['foods'] = json_decode(json_decode($food),true);
 			$data['id'] = $id;
 			// 获取订单总评
-			
 
 			$this->load->view('commentTotal',$data);
 		}
@@ -939,7 +938,7 @@ class home extends CI_Controller
 			// var_dump($_POST);
 			$arr = array(
 				'Name'=>$_POST['name'],
-				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'].$_POST['address'],
+				'Address'=> $_POST['myaddress'].'-'.$_POST['address'],
 				'MemberAddressId'=>$_POST['id'],
 				'GoodsPhone'=>$_POST['GoodsPhone'],
 				'SparePhone'=>$_POST['SparePhone'],
