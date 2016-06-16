@@ -10,29 +10,32 @@ h2.tip{margin:20px;font-size: 18px}
    <?php
 	
 	if(!isset($_SESSION['phone'])){
-		if (empty($_GET["code"]))
-		  {
-		   header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
-		  }
-		  $code = $_GET['code'];
-		 // 获取access_token 用户令牌
-		  $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
-		  $res =json_decode(file_get_contents($url));
-		  $openId= $res->openid;
-		  $_SESSION['openid'] = $openId;
+	// 	if (empty($_GET["code"]))
+	// 	  {
+	// 	   header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
+	// 	  }
+	// 	  $code = $_GET['code'];
+	// 	 // 获取access_token 用户令牌
+	// 	  $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
+	// 	  $res =json_decode(file_get_contents($url));
+	// 	  $openId= $res->openid;
+	// 	  $_SESSION['openid'] = $openId;
 		  
-		  $_SESSION['update_code'] = $res->access_token;
-		  $_token = $res->access_token;
-		//  获取用户数据
-		  $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
-		  $userinfo = json_decode(file_get_contents($url2),TRUE);
-       $this->session->set_tempdata('userinfo', $userinfo, 18000);
-		  $phone = file_get_contents(POSTAPI.'API_User?dis=login&UserPhone='.$openId);
-		  $userphone = json_decode($phone);
-		  if($userphone != '0'){
-      $this->session->set_tempdata('phone', $userphone, 18000);
-		  }
+	// 	  $_SESSION['update_code'] = $res->access_token;
+	// 	  $_token = $res->access_token;
+	// 	//  获取用户数据
+	// 	  $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
+	// 	  $userinfo = json_decode(file_get_contents($url2),TRUE);
+ //       $this->session->set_tempdata('userinfo', $userinfo, 18000);
+	// 	  $phone = file_get_contents(POSTAPI.'API_User?dis=login&UserPhone='.$openId);
+	// 	  $userphone = json_decode($phone);
+	// 	  if($userphone != '0'){
+ //      $this->session->set_tempdata('phone', $userphone, 18000);
+	// 	  }
+        $_SESSION['phone'] ='15828277232'; 
 	}
+
+   
   ?> 
 
   <!-- 注册弹框 -->
