@@ -103,7 +103,7 @@
               break;
             case '1':
             case '6':
-                echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
+                echo "<a href='".site_url('home/refund')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
             case '7':
               echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
