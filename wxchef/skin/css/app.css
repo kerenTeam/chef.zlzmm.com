@@ -37,6 +37,18 @@ body {
 
 }
 
+.fixButton {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.fixButton button {
+    width: 90%;
+    margin: 0 5%;
+}
+
 .cmax {
     max-height: 4.8rem;
     overflow: hidden;

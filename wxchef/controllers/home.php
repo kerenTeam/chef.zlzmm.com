@@ -55,11 +55,11 @@ class home extends CI_Controller
 			$this->load->view('commentTotal',$data);
 		}
 
-	}
-	//订单总评价
-	public function meituan(){
+	} 
+	//退款申请页
+	public function refund(){
 
-		$this->load->view('meituan');
+		$this->load->view('refund');
 	}
 	//密码修改
 	public function pwdchange(){
